@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  max-width: 70%;
+  margin: auto;
+}
+
+.wrapper > p,
+.wrapper > h1 {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.wrapper > h1 {
+  letter-spacing: 3px;
+}
+
+.accordion {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.accordion i {
+  font-size: 1.6rem;
+}
+
+.active,
+.accordion:hover {
+  background-color: #97ca8b;
+}
+.pannel {
+  padding: 0 2rem 2.5rem 2rem;
+  background-color: white;
+  overflow: hidden;
+  background-color: #b0b3b2;
+  display: none;
+}
+.pannel p {
+  color: black;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.faq {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Estilo do faq- */
+section.faq-hoteis{
+    height: 100px;
+
+    background-image: url(/fundo/fundo3.jpg);   /* banner sustentavel */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    position: relative;
+    color: white;
+}
+
+.faq-hoteis > .faq-overley{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #13471e72;    /* transparencia do banner */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.faq-hoteis > .faq-interface{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+
+}
+
+/*Estilo do botão FAQ) */
+.faq-button button{
+    justify-content:center;
+    height: 60px;
+    width: 200px;
+    font-size: 15px; 
+    font-style:italic;
+    background-color: white;
+    border: 1px solid white;  /* Borda botoões contato/queroConhecer/saibaMais */
+    border-radius: 30px;
+    color: black;  /* Cor das letras botoões contato/queroConhecer/saibaMais */
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+.faq-button button:hover{
+    background-color: #13471e72; /* Cor dentro dos botoes botoões contato/queroConhecer/saibaMais */
+    color:white; /* Cor dentro das palavras/contato/queroConhecer/saibaMais*/
+}

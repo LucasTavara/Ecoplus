@@ -1,0 +1,535 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; 
+    /* Tamanho das palavras navbar */ 
+}
+
+body{
+    background-color: white;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* teste modo dark */
+
+/*  */
+.interface{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/*Estilo do hero (geral) */
+header .btn-contato button, .hero-site button, .hoteis button, .faq-button button{
+    font-size: 15px; 
+    background-color: transparent;
+    border: 1px solid white;  /* Borda botoões contato/queroConhecer/saibaMais */
+    border-radius: 30px;
+    color: white;  /* Cor das letras botoões contato/queroConhecer/saibaMais */
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+header .btn-contato button:hover, .hero-site button:hover, .hoteis button:hover, .faq-button button:hover{
+    background-color: white; /* Cor dentro dos botoes botoões contato/queroConhecer/saibaMais */
+    color:black; /* Cor dentro das palavras/contato/queroConhecer/saibaMais*/
+}
+
+/*Estilo do header  */ 
+header{
+    width: 100%;
+    padding: 40px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    transition: 0.1s;    /* transição nav bar */
+    z-index: 99999999999999999999999999999; /* menu pra cima */
+}
+
+header .interface{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img{              /* logo */
+}
+
+/* Estilo do menu dinamico */
+header .logo img.logo-preto{
+    display: none;
+    width: 55px;       /* Tamanho da logo *Modificando, altera tamanho da barra de navegacao */
+    height: 55px;
+}
+
+header.rolar{
+    background-color: #254e2c; /* Cor da barra de naveção */
+    padding: 5px 0;  /* Tamanho da Barra de navegação */
+
+    box-shadow: 0 0 30px #346231;  /* sombra da barra */
+}
+
+header.rolar .menu-desktop nav ul li a{
+    color: white; /* Cor das palavras da barra de navegação */
+}
+
+header.rolar .btn-contato button{
+    border: 1px solid white;  /* Cor da borda do botão barra de navegação *rolagem */
+    color: rgb white;   /* Cor da fonte do botão barra de navegação *rolagem */
+}
+
+header.rolar .btn-contato button:hover{
+    background: #ffffff;
+    color: black; /* Cor da palavra do botão barra de navegação *rolagem */
+}
+/* efeito da logo */
+header.rolar .logo .logo-branca{
+    display: none;
+}
+
+header.rolar .logo .logo-preto{
+    display: block;
+}
+/* Fim! */
+
+/* Header menu */
+header .menu-desktop nav ul{
+    list-style-type: none;
+    font-size: 20px;
+}
+
+header .menu-desktop nav ul li{
+    display: inline-block;
+    margin: 0 70px;
+}
+
+header .menu-desktop nav ul li a{
+    color: white;  /* Cores das palavras barra de navegção *fixa* */
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+.menu-desktop nav a:hover{
+    transform: scale(1.05);
+
+}
+
+header .btn-contato button{
+    width: 120px;
+    height: 35px;
+}
+
+/* Estilo do menu mobile */
+header .btn-menu-mob{
+    display: none;
+    position: relative;
+    z-index: 999999999999999999999999999999999999999999999;
+}
+
+header .btn-menu-mob div{
+    background-color: white; /* cor do menu mobile */
+    height: 3px;
+    margin: 10px 0;
+    transition: 0.2s;
+}
+
+header .btn-menu-mob .line-menumob-1{
+    width: 30px;
+}
+
+header .btn-menu-mob .line-menumob-2{
+    width: 20px;
+}
+
+header.rolar .btn-menu-mob div{
+    background-color: white;  /* Cor do menu mobile *rolagem* */
+}
+
+header .btn-menu-mob .line-menumob-1.ativo1{
+    transform: rotate(45deg) translate(30%);
+    background-color: white;  /* X cor do menu aberto mobile */
+}
+
+header .btn-menu-mob .line-menumob-2.ativo2{
+    transform: rotate(-45deg) translate(30%);
+    width: 30px;
+    background-color: white; /* X cor do menu aberto mobile */
+}
+/* fim */
+
+/* Estilo do Menu Mobile */
+header .menu-mobile{
+    width: 0;
+    height: 0;
+    background-color:  #254e2c;  /* Cor do menu aberto mobile */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+header .menu-mobile nav{
+    width: 100%;
+}
+
+header .menu-mobile nav ul{
+    list-style-type: none;
+
+}
+
+header .menu-mobile nav a{
+    font-size: 24px;
+    text-decoration: none;
+    color: white; /* cor das palavras menu aberto mobile */
+    padding: 20px 0;
+    display: block;
+    transition: 0.5s;
+}
+
+header .menu-mobile nav a:hover{
+    background-color: #f6f4fd; /* cor da caixa  */
+    color: #010D00; /* cor das palavras mouse em cima*/
+    box-shadow: 0 0 20px #010D00; /* cor da sombra menu mobile aberto mouse em cima */
+
+    border-radius: 50px; /* borda da caixa */
+}
+
+header .menu-mobile.abrir{  /* Tamanho tela inteira */
+    width: 100%;
+    height: 100vh;
+
+}
+
+/* travamento da rolagem */
+body.no-overflow{
+    overflow: hidden;
+}
+/* Fim */
+
+/* Estilo do hero */
+
+section.hero-site{
+    height: 100vh;
+    background-image: url(/imgcabeçalho/Banner.jpeg);            /* Imagem principal de cima */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+
+.hero-site .interface{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.hero-site .txt-hero h1{          /* Ecoplus/novoMundo */
+    font-size: 4em;
+    line-height: 70px;
+    font-weight: 200;
+}
+
+.hero-site .txt-hero h1 span{
+    display: block;
+    font-weight: 800;
+}
+
+.hero-site .txt-hero p{      /* paragrafo de texto */
+    font-size: 15px;
+    font-weight: 300;
+    margin: 20px 0;
+}
+
+.hero-site .txt-hero p span{
+    color: #465902;
+    display: block;
+}
+
+.hero-site button{          /* Quero conhecer */
+    width: 200px;
+    height: 55px;
+    font-size: 20px;
+}
+
+/* Estilo do Zig-zag */
+section.vantagens{
+    padding: 80px 0;
+}
+
+.vantagens .itens-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10%;
+    margin-bottom: 60px;
+}
+
+.vantagens .itens-container .img-itens img{
+    max-width: 300px;
+    border-radius: 30px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.itens-container .img-itens:hover{
+    scale: 1.2;
+    transition: 0.5s;
+}
+
+.vantagens .itens-container .txt-itens h3{
+    font-size: 3em;
+    line-height: 50px;
+    margin-bottom: 30px;
+
+}
+
+.itens-container .txt-itens h3 span{
+    font-weight: 300;
+    color: #93A603;
+}
+
+
+/* Estilo dos botoes contato */
+
+section.Contato{
+    background-color: white;
+    padding: 80px 0;   
+}
+
+.txt-contato, .icons-contato{
+    display: inline-block;
+    width: 50%;
+    margin-right: -4px;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+
+
+.Contato .txt-contato h3{
+    font-size: 3em; /* Fale agora com a  */
+    line-height: 60px;
+    font-weight: 200; /* Nossa equipe */
+}
+
+.Contato .txt-contato h3 span{
+    display: block;
+    font-weight: 700;
+}
+
+.Contato .icons-contato a{
+    text-decoration: none;
+}
+
+.Contato .icons-contato button{       /* Chat */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+
+    width: 60%;
+    height: 70px;
+    margin: 0 auto 20px auto;
+    padding: 0 60px;
+
+    background-color: transparent;
+    border: 2px solid #346231; /* cor da borda */
+    cursor: pointer;
+    border-radius: 20px;
+
+    transition: 0.5s;
+}
+
+.Contato .icons-contato button i{
+    font-size: 24px;   /* tamanaho dos iconis */
+}
+
+.Contato .icons-contato button:hover{
+    background-color: #346231;
+}
+
+.Contato .icons-contato button:hover i, .Contato .icons-contato button:hover p{
+    color: #ffffff;
+}
+
+/* Estilo saiba mais */
+section.hoteis{
+    height: 600px;
+
+    background-image: url(/imgustentavel/sustentavel.jpg);   /* banner sustentavel */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    position: relative;
+    color: white;
+}
+
+.hoteis > .overley{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00000072;    /* transparencia do banner */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hoteis > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+
+}
+
+.hoteis h3{
+    font-size: 3em;
+    line-height: 50px;
+    font-weight: 200;
+}
+
+.hoteis h3 span{
+    display: block;
+    font-weight: 700;
+}
+
+.hoteis p{
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.hoteis button{
+    width: 220px;
+    height: 60px;
+}
+
+/* Estilo da sessao como funciona */
+section.como-funciona{
+    padding: 60px 0;   /* espaçamento entre telas */
+}
+
+.txt-funciona, .instrucoes{
+    display: inline-block;
+    width: 50%;
+    margin-right: -4px;
+    vertical-align: top;
+}
+
+.como-funciona .txt-funciona{
+    position: sticky;
+    top: 50%;
+    padding-bottom: 30px;
+}
+
+
+.como-funciona .txt-funciona h3{
+    font-size: 4em;
+    line-height: px;   /* espaçamento entre palavras coomo funciona */
+    font-weight: 300;
+}
+
+.como-funciona .txt-funciona h3 span{
+    display: block;
+    font-weight: 700;
+    color: #022601;
+}
+
+/* como funciona */
+.instrucoes .instru-box{    /* caixa como funciona */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 40px;
+    border: 2px solid #295927; /* cor da borda */
+    padding: 20px;
+
+                                       /* por borda */
+
+    border-radius: 20px;
+}
+
+.instrucoes .instru-box img{  /* imagem como funciona */
+    max-width: 300px;
+    border-radius: 20px;   
+}
+
+.instrucoes .instru-box h4{
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.instrucoes .instru-box h4 span{    
+    font-weight: 300;
+    color: #93A603;
+}
+
+.instrucoes .instru-box p{
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+/* Estilo do Rodape */
+footer{
+    background-color: #022601; /* cor do rodape *#022601 padrão */
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer .top-footer button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white; /* cor da borda  */
+    background-color: transparent;
+    color: white; /* cor dos icons */
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: 0.5s;
+    
+}
+
+footer .top-footer button:hover{
+    background-color: white; /* cor de dentro */
+    color: black;
+}
+
+footer .middle-footer{
+    margin: 20px 0;
+}
+
+footer .middle-footer a{
+    color: white;
+}
+
+footer .bottom-footer{
+    border-top: 2px solid white;
+}
+
+footer .bottom-footer p{
+    color: white;
+    margin-top: 10px;
+
+}
+
+

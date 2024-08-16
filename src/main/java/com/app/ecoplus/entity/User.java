@@ -1,7 +1,6 @@
-package com.app.ecoplus.Entity;
+package com.app.ecoplus.entity;
 
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "user")
@@ -15,6 +14,7 @@ public class User {
     private String Sobrenome;
     private String Cidade;
     private int Cep;
+
 
     public Long getId() {
         return id;

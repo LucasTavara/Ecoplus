@@ -1,8 +1,9 @@
-package com.app.ecoplus.Repository;
+package com.app.ecoplus.repository;
 
-import com.app.ecoplus.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.app.ecoplus.entity.User;
 
 
 @Repository

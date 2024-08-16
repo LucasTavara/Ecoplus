@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- /Fim -->
 
@@ -45,9 +45,9 @@
                 <section class="menu-desktop">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="sobrenos.html">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrenos}">Sobre Nós</a></li> <!-- Criar sobrenos.html -->
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -55,7 +55,7 @@
 
     <!--Botão  de Contato *Entrar > Login -->
                 <section class="btn-contato">
-                    <a href="login.html">
+                    <a th:href="@{/login}">
                         <button>Entrar</button>
                     </a>
                 </section>
@@ -73,9 +73,9 @@
                 <section class="menu-mobile" id="menu-mobile">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="sobrenos.html">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrnos}">Sobre Nós</a></li> <!-- Criar sobrenos.html -->
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -88,8 +88,8 @@
             <div class="interface">
                 <div class="txt-hero">
                     <h1>Descubra Um <span>Novo Mundo</span></h1>
-                    <p>Uma nação que não consegue controlar suas fontes de energia não pode controlar o seu futuro.</span></p>
-                    <a href="login.html">
+                    <p>Uma nação que não consegue controlar suas fontes de energia não pode controlar o seu futuro.</p>
+                    <a th:href="@{/login}">
                         <button>Quero Conhecer</button> <!-- Botão direciona a Login > Cadastro -->
                     </a> 
                 </div>
@@ -164,7 +164,7 @@
 
                 <h3>Quer fazer parte de um <span>Mundo sustentavel?</span></h3>
                 <p>A sustentabilidade é a abertura para o futuro</p>
-                <a href="Email.html">
+                <a th:href="@{/email}">
                     <button>Mande um E-mail!</button>
                 </a>
             </div>
@@ -245,7 +245,7 @@
                 </article>
 
                 <article class="icons-contato">
-                    <a href="chat.html">
+                    <a th:href="chat.html"> <!-- Criar chat.html  -->
                         <button><p>Iniciar um Chat!</button>
                     </a>
                     
@@ -257,6 +257,8 @@
         <!-- Rodape -->
         <footer>
             <div class="interface">
+            
+            <!-- Adicionar href aos links do rodapé  -->
                 <section class="top-footer">
                     <a href="#"><button><i class="bi bi-instagram"></i></button></a>
                     <a href="#"><button><i class="bi bi-envelope"></i></button></a>

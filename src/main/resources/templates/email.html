@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
   <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -28,7 +28,7 @@
     </form>
 
 	<div id="home">
-		<a href="index.html"> <img
+		<a th:href="@{/index}"> <img
 			src="/img/logo/logo_cinza sem fundo.png" alt="icone-usuário"
 			title="Voltar a Home" height="40px" width="40px">
 		</a>

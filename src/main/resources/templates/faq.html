@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +46,9 @@
                 <section class="menu-desktop">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="sobrenos.html">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrenos}">Sobre Nós</a></li> <!-- Criar sobrenos.html -->
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -56,7 +56,7 @@
 
     <!--Botão  de Contato *Entrar > Login -->
                 <section class="btn-contato">
-                    <a href="login.html">
+                    <a th:href="@{/login}">
                         <button>Entrar</button>
                     </a>
                 </section>
@@ -74,9 +74,9 @@
                 <section class="menu-mobile" id="menu-mobile">
                     <nav>
                         <ul>
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -264,7 +264,7 @@
                 <section class="top-footer">
                     <a href="#"><button><i class="bi bi-instagram"></i></button></a>
                     <a href="#"><button><i class="bi bi-envelope"></i></button></a>
-                    <a href="#"><button><i class="bi bi-github"></i></button></a>
+                    <a href="github.com/LucasTavara/Ecoplus"><button><i class="bi bi-github"></i></button></a>
                 </section>
 
                 <div class="middle-footer">

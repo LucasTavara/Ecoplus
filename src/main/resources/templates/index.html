@@ -45,9 +45,9 @@
                 <section class="menu-desktop">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="sobrenos.html">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrenos}">Sobre Nós</a></li> <!-- Criar sobrenos.html -->
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -55,7 +55,7 @@
 
     <!--Botão  de Contato *Entrar > Login -->
                 <section class="btn-contato">
-                    <a href="login.html">
+                    <a th:href="@{/login}">
                         <button>Entrar</button>
                     </a>
                 </section>
@@ -73,9 +73,9 @@
                 <section class="menu-mobile" id="menu-mobile">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="sobrenos.html">Sobre Nós</a></li>
-                            <li><a href="faq.html">Biogás</a></li>
+                            <li><a th:href="@{/index}">Inicio</a></li>
+                            <li><a th:href="@{/sobrnos}">Sobre Nós</a></li> <!-- Criar sobrenos.html -->
+                            <li><a th:href="@{/faq}">Biogás</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -89,7 +89,7 @@
                 <div class="txt-hero">
                     <h1>Descubra Um <span>Novo Mundo</span></h1>
                     <p>Uma nação que não consegue controlar suas fontes de energia não pode controlar o seu futuro.</p>
-                    <a href="login.html">
+                    <a th:href="@{/login}">
                         <button>Quero Conhecer</button> <!-- Botão direciona a Login > Cadastro -->
                     </a> 
                 </div>
@@ -164,7 +164,7 @@
 
                 <h3>Quer fazer parte de um <span>Mundo sustentavel?</span></h3>
                 <p>A sustentabilidade é a abertura para o futuro</p>
-                <a href="Email.html">
+                <a th:href="@{/email}">
                     <button>Mande um E-mail!</button>
                 </a>
             </div>
@@ -245,7 +245,7 @@
                 </article>
 
                 <article class="icons-contato">
-                    <a href="chat.html">
+                    <a th:href="chat.html"> <!-- Criar chat.html  -->
                         <button><p>Iniciar um Chat!</button>
                     </a>
                     
@@ -257,6 +257,8 @@
         <!-- Rodape -->
         <footer>
             <div class="interface">
+            
+            <!-- Adicionar href aos links do rodapé  -->
                 <section class="top-footer">
                     <a href="#"><button><i class="bi bi-instagram"></i></button></a>
                     <a href="#"><button><i class="bi bi-envelope"></i></button></a>

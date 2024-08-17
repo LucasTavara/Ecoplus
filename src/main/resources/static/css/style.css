@@ -5,7 +5,7 @@
     padding: 0;
 
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: white;
 }
@@ -34,12 +34,12 @@ h2 {
 }
 
 input {
-    width: 70%;                  /*  */
+    width: 80%;                  /* login */
     height: 25px;
     border-radius: 7px;
     outline: none;
     font-weight: 600;
-    color: #F1F2CE;
+    color: black;
     padding-left: 3px;
 }
 
@@ -52,14 +52,15 @@ button {
     background: #305912; /* cor do botão */
 }
 
+
 body {
     width: 100%;            /* fundo de tras*/
     height: 100vh;
-    background-color:#305912 ;
-    background-image: url('/imgcabeçalho/Banner.jpeg');
-    background-repeat: no-repeat;
+    background-image: url('');
+    background-repeat:repeat;
     background-size: 100%;
-    
+    background-color: #CAD9A9;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,31 +76,30 @@ img{
     background-image: url('');
     background-repeat: no-repeat;
     background-size: 100%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-    #container {
-        width: 320px;
-        height: 520px;
+    #container {         /* responsivo */
+        width: 350px;
+        height: 550px;
         border-radius: 10px;
-        -webkit-box-shadow: 0px 0px 6px -1px #000000; 
+        -webkit-box-shadow: 0px 0px 6px -1px #000000;
         box-shadow: 0px 0px 6px -1px #000000;
-        background: #ffffff;  /* cor do box */
+        background: #FDFDF4;  /* cor do box criar */
 
         display: flex;
         align-items: center;
-    }   
+    }
 
-        #container .banner { /* Login boz */
-            width: 520px;
-            height: 520px;
+        #container .banner { /* Login box */
+            width: 600px;
+            height: 550px;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
-            background: #305912;
-            
+            background-image: url('/imgcabeçalho/Banner.jpeg');  /* banner logo*/
             display: none;
             flex-direction: column;
             justify-content: space-evenly;
@@ -107,10 +107,11 @@ img{
         }
 
         #container .box-login {      /* Login *box */
-            width: 320px;
-            height: 520px;
+            width: 350px;
+            height: 550px;
             border-radius: 10px;
             background: #FDFDF4;
+
 
             display: flex;
             flex-direction: column;
@@ -130,8 +131,7 @@ img{
                 .box .social {
                     width: 240px;
                     height: 42px;
-                    
-                
+
                     display: flex;
                     justify-content: space-evenly;
                     align-items: center;
@@ -151,31 +151,14 @@ img{
                 justify-content: space-around;
                 align-items: center;
             }
-    
+
     #bubble {
         cursor: pointer;
         position: absolute;
         width: 50px;
         height: 50px;
-        right: 15px;
-        bottom: 15px;
-        border-radius: 50%;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-
-    #home {
-        cursor: pointer;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        right: 15px;
-        bottom: 15px;
-        border-radius: 50%;
-     
+        right: 90%;
+        bottom: 90%;
 
         display: flex;
         justify-content: center;

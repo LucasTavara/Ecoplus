@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif; 
-    /* Tamanho das palavras navbar */ 
+    font-family: "Poppins", sans-serif;
+    /* Tamanho das palavras navbar */
 }
 
 body{
@@ -23,7 +23,7 @@ body{
 
 /*Estilo do hero (geral) */
 header .btn-contato button, .hero-site button, .hoteis button, .faq-button button{
-    font-size: 15px; 
+    font-size: 15px;
     background-color: transparent;
     border: 1px solid white;  /* Borda botoões contato/queroConhecer/saibaMais */
     border-radius: 30px;
@@ -37,7 +37,7 @@ header .btn-contato button:hover, .hero-site button:hover, .hoteis button:hover,
     color:black; /* Cor dentro das palavras/contato/queroConhecer/saibaMais*/
 }
 
-/*Estilo do header  */ 
+/*Estilo do header  */
 header{
     width: 100%;
     padding: 40px 0;
@@ -55,21 +55,20 @@ header .interface{
     align-items: center;
 }
 
-header .logo img{              /* logo */
-}
+
 
 /* Estilo do menu dinamico */
 header .logo img.logo-preto{
     display: none;
-    width: 55px;       /* Tamanho da logo *Modificando, altera tamanho da barra de navegacao */
-    height: 55px;
+    width: 50px;       /* Tamanho da logo *Modificando, altera tamanho da barra de navegacao */
+    height: 50px;
 }
 
 header.rolar{
-    background-color: #254e2c; /* Cor da barra de naveção */
-    padding: 5px 0;  /* Tamanho da Barra de navegação */
+    background-image: url('/imgcabeçalho/Banner.jpeg');
+    padding: 3px 0;  /* Tamanho da Barra de navegação */
 
-    box-shadow: 0 0 30px #346231;  /* sombra da barra */
+    box-shadow: 0 0 30px #1b3619;  /* sombra da barra */
 }
 
 header.rolar .menu-desktop nav ul li a{
@@ -104,6 +103,7 @@ header .menu-desktop nav ul{
 header .menu-desktop nav ul li{
     display: inline-block;
     margin: 0 70px;
+
 }
 
 header .menu-desktop nav ul li a{
@@ -304,7 +304,7 @@ section.vantagens{
 
 section.Contato{
     background-color: white;
-    padding: 80px 0;   
+    padding: 80px 0;
 }
 
 .txt-contato, .icons-contato{
@@ -435,12 +435,16 @@ section.como-funciona{
     position: sticky;
     top: 50%;
     padding-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
 }
 
 
 .como-funciona .txt-funciona h3{
     font-size: 4em;
-    line-height: px;   /* espaçamento entre palavras coomo funciona */
+    line-height: px;
+    text-align: center;   /* espaçamento entre palavras coomo funciona */
     font-weight: 300;
 }
 
@@ -467,7 +471,7 @@ section.como-funciona{
 
 .instrucoes .instru-box img{  /* imagem como funciona */
     max-width: 300px;
-    border-radius: 20px;   
+    border-radius: 20px;
 }
 
 .instrucoes .instru-box h4{
@@ -476,7 +480,7 @@ section.como-funciona{
     margin-bottom: 10px;
 }
 
-.instrucoes .instru-box h4 span{    
+.instrucoes .instru-box h4 span{
     font-weight: 300;
     color: #93A603;
 }
@@ -506,7 +510,7 @@ footer .top-footer button{
     cursor: pointer;
     margin: 0 10px;
     transition: 0.5s;
-    
+
 }
 
 footer .top-footer button:hover{
@@ -531,5 +535,6 @@ footer .bottom-footer p{
     margin-top: 10px;
 
 }
+
 
 

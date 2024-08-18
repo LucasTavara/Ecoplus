@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt=br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt=br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar conta 1/2</title>
-    
     <!--CSS-->
     <link rel="stylesheet" href="/css/style.css">
-
     <!--JS & jQuery-->
     <script type="text/javascript" src="/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -35,13 +33,13 @@
                 <input type="password" name="password" id="password" placeholder="Serviço Oferecido">
                 <input type="password" name="cpassword" id="cpassword" placeholder="CPF ou CNPJ">
  
-                <a href='Criarcontadois.html'><button>Prosseguir</button></a>
+                <a th:href='@{/criarcontadois'><button>Prosseguir</button></a>
         	</div>
     	</div>
     </div>
 
    	<div id="home">
-    	<a href="login.html">
+    	<a th:href="@{/login}">
     		<img src="/img/logo/logo_cinza sem fundo.png" alt="icone-usuário" title="Voltar a Home" height="40px" width="40px">
     	</a>
    	</div>

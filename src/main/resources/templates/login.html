@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt=br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt=br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,14 +37,14 @@
                 <input type="text" name="username" id="username" placeholder="Username">
                 <input type="password" name="password" id="password" placeholder="Password">
 
-                <a href="password.html">
+                <a th:href="@{/password}">
                     <p>Esqueceu a sua senha?</p>
                 </a>
 
-                <a href='index.html'><button>Prosseguir</button></a>
+                <a th:href='@{/index}'><button>Prosseguir</button></a>
 
-                <a href="Criarconta.html" class="Criar">
-                    <p><span>Criar uma conta</span></p>
+                <a th:href="@{/criarconta}" class="Criar">
+                	<p><span>Criar uma conta</span></p>
                 </a>
 
                 <div class="social">
@@ -56,12 +56,12 @@
 
     </div>
 
-    <a href="index.html">
-        <div id="home">
-            <img src="/img/logo/logo_cinza sem fundo.png" alt="icone-usuário" title="Voltar a Home" height="40px" width="40px">
-        </div>
-    </a>
-
-    </div>
+		<div id="home">
+			<a th:href="@{/index}"> <img
+				src="/img/logo/logo_cinza sem fundo.png" alt="icone-usuário"
+				title="Voltar a Home" height="40px" width="40px">
+			</a>
+		</div>
+	</div>
 </body>
 </html>

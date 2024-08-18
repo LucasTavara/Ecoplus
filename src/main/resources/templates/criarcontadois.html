@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt=br">
+<html lang="pt=br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +7,20 @@
     <title>Criar conta  2</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!--JS & jQuery-->
-    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <div id="fundo-login">   <!-- banner fundo criar conta -->
-        <div>     
-        </div>
+<div id="fundo-login">   <!-- banner fundo criar conta -->
+    <div>
+    </div>
 
-        
+
     <div id="container">
         <div class="banner">
             <img src="" alt="imagem-login">
@@ -39,21 +39,13 @@
 
                 <div class="check">
                     <input type="checkbox" name="termo" id="termo" style="width: 13px; height: 13px;">
-                    <label for="termo" style="color: #3d3d3d;">li e aceito os termos</label>
+                    <label for="termos" style="color: #3d3d3d;">li e aceito os termos</label>
                 </div>
-    
-                <a th:href='@{/index}'><button>Criar Conta</button></a>
+
+                <a href='index.html'><button>Criar Conta</button></a>
             </div>
         </div>
     </div>
-
-   
-        <div id="bubble">
-         <a href="@{/login}">
-            <img src="/img/logo/logo_cinza sem fundo.png" alt="icone-usuário" title="fazer-login" height="511" width="489">
-        </a>
-        </div>
-   
 
     <script>
         $('#termo').click(() => {
@@ -62,11 +54,11 @@
                 width: 65%;
                 height: 420px;
                 border-radius: 10px;
-                background: #fff; 
+                background: #fff;
 
                 color: #3d3d3d;
 
-                -webkit-box-shadow: 0px 0px 6px -1px #000000; 
+                -webkit-box-shadow: 0px 0px 6px -1px #000000;
                 box-shadow: 0px 0px 6px -1px #000000;
 
                 display: flex;
@@ -84,11 +76,9 @@
                     div.hide()
                 })
             )
-            
+
             $('body').append(div)
         })
     </script>
-    </div>
 </body>
-
 </html>

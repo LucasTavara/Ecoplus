@@ -1,8 +1,9 @@
+/* Responsivo login */
 @media (min-width: 1024px) {
     #container {
         width: 902px;
         justify-content: space-between;
-    }  
+    }
 
         #container .banner {
             display: flex;
@@ -12,5 +13,5 @@
             width: 385px;
             border-radius: 10px 10px 10px 0px;
         }
-     
+
 }

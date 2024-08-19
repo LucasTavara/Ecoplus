@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt=br">
+<html lang="pt=br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +11,12 @@
     <!-- Fim -->
 
     <!--CSS-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <!--JS & jQuery-->
-    <script type="text/javascript" src="js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}" th:integrity="@{sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=}" th:crossorigin="@{anonymous}"></script>
 </head>
 <body>
 
@@ -28,6 +28,7 @@
 
     <div id="container">
         <div class="banner">
+        
         </div>
         <i class="bi bi-arrow-left-short"></i>
 
@@ -39,10 +40,10 @@
                 <input type="text" name="username" id="username" placeholder="Nome Completo">
                 <input type="email" name="email" id="email" placeholder="Data de Nascimento">
                 <input type="email" name="cmail" id="cmail" placeholder="Cidade">
-                <input type="password" name="password" id="password" placeholder="Serviço Oferecido">
-                <input type="password" name="cpassword" id="cpassword" placeholder="CPF ou CNPJ">
+                <input type=text name="password" id="password" placeholder="Serviço Oferecido">
+                <input type="text" name="cpassword" id="cpassword" placeholder="CPF ou CNPJ">
 
-                <a href='Criarcontadois.html'><button>Prosseguir</button></a>
+                <a th:href='@{/criarconta}'><button>Prosseguir</button></a>
             </div>
         </div>
 

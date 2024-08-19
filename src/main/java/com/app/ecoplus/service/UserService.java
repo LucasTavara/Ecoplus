@@ -47,8 +47,5 @@ public class UserService {
         throw new RuntimeException("User not found with ID:" + user.getId());
     }
 
-<<<<<<< HEAD
-=======
 }
 }
->>>>>>> f88345b6c4e0176b7247a847906b4265086b4f22

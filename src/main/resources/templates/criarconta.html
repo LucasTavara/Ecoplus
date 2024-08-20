@@ -38,12 +38,21 @@
             <div class="box-account">
                 <h2>informe seus dados</h2>
                 <input type="text" name="username" id="username" placeholder="Nome Completo">
-                <input type="email" name="email" id="email" placeholder="Data de Nascimento">
+                <input type="email" name="email" id="email" placeholder="Email">
                 <input type="email" name="cmail" id="cmail" placeholder="Cidade">
-                <input type=text name="password" id="password" placeholder="Serviço Oferecido">
+                <input list="plataformas" name="plataforma" placeholder="Serviços Oferecidos">
+                <datalist id="plataformas" ><option value="Usuário"><option value="Fornecedor">
+                </datalist>
                 <input type="text" name="cpassword" id="cpassword" placeholder="CPF ou CNPJ">
+                <input type="password" name="rpassword" id="rpassword" placeholder="Senha">
+                <input type="password" name="vpassword" id="vpassword" placeholder="Repita Senha">
 
-                <a th:href='@{/criarconta}'><button>Prosseguir</button></a>
+                <div class="check">
+                    <input type="checkbox" name="termo" id="termo" style="width: 13px; height: 13px;">
+                    <label for="termos" style="color: #3d3d3d;">li e aceito os termos</label>
+                </div>
+
+                <a th:href='@{/criarconta}'><button>CADASTRAR</button></a>
             </div>
         </div>
 

@@ -11,12 +11,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nomeCompleto;
     private String email;
-	private String nome;
-    private String sobrenome;
     private String cidade;
-    private int cep;
-    private LocalDate dataDeNascimento;
+    private String serviçoOferecido;
+    private Integer Documento;
+
 
 
 
@@ -37,28 +37,13 @@ public class User {
 		this.email = email;
 	}
 
-    public String getNome() {
-        return nome;
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public int getCep() {
-        return cep;
-    }
-
-    public void setCep(int cep) {
-        this.cep = cep;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getCidade() {
@@ -68,13 +53,20 @@ public class User {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-    
-    public LocalDate getDataDeNascimento() {
-		return dataDeNascimento;
-	}
 
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
-	}
+    public String getServiçoOferecido() {
+        return serviçoOferecido;
+    }
 
+    public void setServiçoOferecido(String serviçoOferecido) {
+        this.serviçoOferecido = serviçoOferecido;
+    }
+
+    public Integer getDocumento() {
+        return Documento;
+    }
+
+    public void setDocumento(Integer documento) {
+        Documento = documento;
+    }
 }

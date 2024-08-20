@@ -40,11 +40,11 @@ public class UserService {
     Optional<User> newUser = findById(user.getId());
     if (newUser.isPresent()) {
     	User existingUser = newUser.get();
-        existingUser.setNome(user.getNome());
-        existingUser.setSobrenome(user.getSobrenome());
+        existingUser.setNomeCompleto(user.getNomeCompleto());
         existingUser.setEmail(user.getEmail());
-        existingUser.setCep(user.getCep());
         existingUser.setCidade(user.getCidade());
+        existingUser.setServiçoOferecido(user.getServiçoOferecido());
+        existingUser.setDocumento(user.getDocumento());
         return userRepository.save(existingUser);
     }else {
         throw new RuntimeException("User not found with ID:" + user.getId());

@@ -13,11 +13,9 @@ import com.app.ecoplus.entity.User;
 public interface UserRepository  extends JpaRepository<User, Long> {
 	
 	// Checar depois.
-	Optional<User> findByNome(String nome);
-	
-	//Precisa de desserialização.
-	Optional<User> findByDataDeNascimento(LocalDate dataDeNascimento);
-	
+	Optional<User> findByNomeCompleto(String nomeCompleto);
+
+
     Optional<User> findByEmail(String email);
     boolean existsByEmail(String email);
     

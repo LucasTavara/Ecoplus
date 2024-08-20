@@ -9,19 +9,16 @@ public class UserDto {
     private Long id;
     private String nome;
     private String email;
-    
-    // Formatando data para dia-mês-ano
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate dataDeNascimento;
+    private Integer Documento;
 
     public UserDto() {
     }
 
-    public UserDto(Long id, String nome, String email, LocalDate dataDeNascimento) {
+    public UserDto(Long id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
+
     }
 
     public Long getId() {
@@ -48,12 +45,12 @@ public class UserDto {
         this.email = email;
     }
 
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
+    public Integer getDocumento() {
+        return Documento;
     }
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
+    public void setDocumento(Integer documento) {
+        Documento = documento;
     }
 
     @Override
@@ -62,7 +59,7 @@ public class UserDto {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", dataDeNascimento=" + dataDeNascimento +
+                ", documento=" + Documento +
                 '}';
     }
 }

@@ -23,7 +23,6 @@ public class UserController {
 	@Autowired
     private UserService userService;
 
-    
     // Create 
     @PostMapping
     public User createUser(@RequestBody User user) {

@@ -1,58 +1,44 @@
 package com.app.ecoplus.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
+<<<<<<< HEAD
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+=======
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+>>>>>>> b479bd4d71bfdf48fa87740c487dcc9eb0e471f6
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    private String nomeCompleto;
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String cidade;
+    @NotBlank
+    private String serviçoOferecido;
+    @NotBlank
+    private Integer Documento;
 
-    private String Nome;
-    private String Sobrenome;
-    private String Cidade;
-    private int Cep;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b479bd4d71bfdf48fa87740c487dcc9eb0e471f6
+    
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public String getSobrenome() {
-        return Sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        Sobrenome = sobrenome;
-    }
-
-    public int getCep() {
-        return Cep;
-    }
-
-    public void setCep(int cep) {
-        Cep = cep;
-    }
-
-    public String getCidade() {
-        return Cidade;
-    }
-
-    public void setCidade(String cidade) {
-        Cidade = cidade;
-    }
 }

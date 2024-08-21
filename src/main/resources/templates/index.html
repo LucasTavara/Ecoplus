@@ -1,280 +1,329 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleeco.css">
-    <link rel="stylesheet" href="css/responsive.css" media="screen">
-    <link rel="website icon" type="png" href="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/styleeco.css}">
+<link rel="stylesheet" th:href="@{/css/responsive.css}" media="screen">
+<link rel="website icon" type="png" href="">
 
 
-    <!-- Iconis Usados No BootStrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Fim. -->
+<!-- Iconis Usados No BootStrap -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Fim. -->
 
 
-    <!-- Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!-- /Fim -->
+<!-- Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	rel="stylesheet">
+<!-- /Fim -->
 
-    <!-- Scripts de JS -->
-    <script src="js/menu.js" defer></script>
-    <script src="js/btn-menu-mob.js" defer></script>
-    <!-- Fim -->
-    <title>Ecoplus</title>
+<!-- Scripts de JS -->
+<script th:src="@{/js/menu.js}" defer></script>
+<script th:src="@{/js/btn-menu-mob.js}" defer></script>
+<!-- Fim -->
+<title>Ecoplus</title>
 </head>
 <body>
 
 
-<!-- Cabeçalho -->
+	<!-- Cabeçalho -->
 
-<!--Logo -->
-<header id="header">
-    <div class="interface">
-        <section class="logo">
+	<!--Logo -->
+	<header id="header">
+		<div class="interface">
+			<section class="logo">
 
-            <img class="logo-branca"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
-            <img class="logo-preto"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
+				<img class="logo-branca" th:src="${LogoCinza}" 
+					alt="logotipo" width="88px" height="88px"> <img
+					class="logo-preto" th:src="${LogoPreta}" 
+					alt="logotipo" width="88px" height="88px"> 
 
-        </section>
-        <!-- Fim. -->
-
-
-        <!-- Menu Geral -->
-        <section class="menu-desktop">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
-                </ul>
-            </nav>
-        </section>
-        <!-- Fim. -->
-
-        <!--Botão  de Contato *Entrar > Login -->
-        <section class="btn-contato">
-            <a href="login.html">
-                <button>Entrar</button>
-            </a>
-        </section>
-
-        <!-- Fim. -->
+			</section>
+			<!-- Fim. -->
 
 
-        <!-- Menu mobile *-------------------------------* -->
-        <div class="btn-menu-mob" id="btn-menu-mob">
+			<!-- Menu Geral -->
+			<section class="menu-desktop">
+				<nav>
+					<ul>
+						<li><a th:href="@{/}">Inicio</a></li>
+						<li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+						<li><a th:href="@{/faq}">Biogás</a></li>
+					</ul>
+				</nav>
+			</section>
+			<!-- Fim. -->
 
-            <div class="line-menumob-1"></div>
-            <div class="line-menumob-2"></div>
-        </div>
+			<!--Botão  de Contato *Entrar > Login -->
+			<section class="btn-contato">
+				<a th:href="@{/login}">
+					<button>Entrar</button>
+				</a>
+			</section>
 
-        <section class="menu-mobile" id="menu-mobile">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
-                </ul>
-            </nav>
-        </section>
-    </div>
-</header>
-<!-- Fim. -->
-
-<!-- Texto no Site (hero) -->
-<section class="hero-site">
-    <div class="interface">
-        <div class="txt-hero">
-            <h1>Descubra Um <span>Novo Mundo</span></h1>
-            <p>Uma nação que não consegue controlar suas fontes de energia não pode controlar o seu futuro.</span></p>
-            <a href="login.html">
-                <button>Quero Conhecer</button> <!-- Botão direciona a Login > Cadastro -->
-            </a>
-        </div>
-    </div>
-</section>
-<!-- Fim. -->
-
-<!-- Carrossel de Imagens, ZIG-ZAG ><>-->
-<section class="vantagens">
-    <div class="interface">
+			<!-- Fim. -->
 
 
+			<!-- Menu mobile *-------------------------------* -->
+			<div class="btn-menu-mob" id="btn-menu-mob">
 
-        <!-- imagem 1 -->
-        <article class="itens-container">
-            <div class="txt-itens">
-                <h3><span>Capacidade</span><br>Consultoria Estrategica</h3>
-                <p>Orientamos organizações na transição para uma economia de baixo carbono, com soluções estratégicas integradas em gestão climática, descarbonização da cadeia de valor e uso sustentável da biodiversidade.</p>
-            </div>
+				<div class="line-menumob-1"></div>
+				<div class="line-menumob-2"></div>
+			</div>
 
-            <div class="img-itens">
-                <img src="/imagenszigzag/imagem 1.jpg" alt="">
-            </div>
-        </article>
+			<section class="menu-mobile" id="menu-mobile">
+				<nav>
+					<ul>
+						<li><a th:href="@{/}">Inicio</a></li>
+						<li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+						<li><a th:href="@{/faq}">Biogás</a></li>
+					</ul>
+				</nav>
+			</section>
+		</div>
+	</header>
+	<!-- Fim. -->
 
-        <!-- imagem 2 -->
-        <article class="itens-container">
+	<!-- Texto no Site (hero) -->
+	<section class="hero-site">
+		<div class="interface">
+			<div class="txt-hero">
+				<h1>
+					Descubra Um <span>Novo Mundo</span>
+				</h1>
+				<p>
+					Uma nação que não consegue controlar suas fontes de energia não
+					pode controlar o seu futuro.<span></span>
+				</p>
+				<a th:href="@{/login}">
+					<button>Quero Conhecer</button> <!-- Botão direciona a Login > Cadastro -->
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- Fim. -->
 
-            <div class="img-itens item-1">
-                <img src="imagenszigzag/imagem 2.jpg" alt="homem sorrindo">
-            </div>
-
-            <div class="txt-itens item-2">
-                <h3><span>Capacidade</span><br>Ativos Sustentáveis</h3>
-                <p>Desenvolvemos projetos e comercializamos créditos de carbono, além de estruturarmos oportunidades e veículos de finanças sustentáveis com renomados parceiros para viabilizar projetos que fomentem a transição para a economia de baixo carbono. </p>
-            </div>
-        </article>
-
-        <!-- imagem 3-->
-        <article class="itens-container">
-            <div class="txt-itens">
-                <h3><span>Capacidade</span><br>Reduzir Desperdícios</h3>
-                <p>Promover a reutilização de resíduos orgânicos para a produção de energia limpa.</p>
-            </div>
-
-            <div class="img-itens">
-                <img src="imagenszigzag/imagem 3.jpg" alt="homem sorrindo">
-            </div>
-        </article>
-
-        <!-- imagem 4-->
-        <article class="itens-container">
-
-            <div class="img-itens item-1">
-                <img src="imagenszigzag/imagem 4.jpg" alt="homem sorrindo">
-            </div>
-
-            <div class="txt-itens item-2">
-                <h3><span>Capacidade</span><br>Eficiência Energética</h3>
-                <p>Aumentar a produção e uso de biogás como fonte de energia sustentável.</p>
-            </div>
-        </article>
-
-    </div>
-</section>
-<!-- Fim. -->
+	<!-- Carrossel de Imagens, ZIG-ZAG ><>-->
+	<section class="vantagens">
+		<div class="interface">
 
 
-<!-- Saiba Mais -->
-<section class="hoteis">
-    <div class="interface">
 
-        <h3>Quer fazer parte de um <span>Mundo sustentavel?</span></h3>
-        <p>A sustentabilidade é a abertura para o futuro</p>
-        <a href="Email.html">
-            <button>Mande um E-mail!</button>
-        </a>
-    </div>
-    <div class="overley">
-    </div>
-</section>
-<!-- Fim. -->
+			<!-- imagem 1 -->
+			<article class="itens-container">
+				<div class="txt-itens">
+					<h3>
+						<span>Capacidade</span><br>Consultoria Estrategica
+					</h3>
+					<p>Orientamos organizações na transição para uma economia de
+						baixo carbono, com soluções estratégicas integradas em gestão
+						climática, descarbonização da cadeia de valor e uso sustentável da
+						biodiversidade.</p>
+				</div>
 
-<!-- Como funciona -->
-<section class="como-funciona">
-    <div class="interface">
+				<div class="img-itens">
+					<img th:src="${Imagem1}" alt="">
+				</div>
+			</article>
 
-        <div class="txt-funciona">
-            <h3>Como <span>Funciona?</span></h3>
-        </div>
+			<!-- imagem 2 -->
+			<article class="itens-container">
 
-        <div class="instrucoes">
-            <article class="instru-box">
+				<div class="img-itens item-1">
+					<img th:src="${Imagem2}" alt="homem sorrindo">
+				</div>
 
-                <div class="img-instru-box">
-                    <img src="/comofunciona/cadastro.jpg" alt="iconm">
-                </div>
+				<div class="txt-itens item-2">
+					<h3>
+						<span>Capacidade</span><br>Ativos Sustentáveis
+					</h3>
+					<p>Desenvolvemos projetos e comercializamos créditos de
+						carbono, além de estruturarmos oportunidades e veículos de
+						finanças sustentáveis com renomados parceiros para viabilizar
+						projetos que fomentem a transição para a economia de baixo
+						carbono.</p>
+				</div>
+			</article>
 
-                <div class="txt-instru-box">
-                    <h4><span>Faz o Cadastro</span></h4>
-                    <p>Produtores e usuários de resíduos orgânicos se cadastram na plataforma.</p>
-                </div>
-            </article>
+			<!-- imagem 3-->
+			<article class="itens-container">
+				<div class="txt-itens">
+					<h3>
+						<span>Capacidade</span><br>Reduzir Desperdícios
+					</h3>
+					<p>Promover a reutilização de resíduos orgânicos para a
+						produção de energia limpa.</p>
+				</div>
 
-            <article class="instru-box">
+				<div class="img-itens">
+					<img th:src="${Imagem3}" alt="homem sorrindo">
+				</div>
+			</article>
 
-                <div class="img-instru-box">
-                    <img src="comofunciona/residuos.jpg" alt="iconm">
-                </div>
+			<!-- imagem 4-->
+			<article class="itens-container">
 
-                <div class="txt-instru-box">
-                    <h4><span>Faz o Anúncio de Resíduos</span></h4>
-                    <p>Produtores anunciam os resíduos disponíveis, especificando tipo, quantidade e localização.</p>
-                </div>
-            </article>
+				<div class="img-itens item-1">
+					<img th:src="${Imagem4}" alt="homem sorrindo">
+				</div>
 
-            <article class="instru-box">
+				<div class="txt-itens item-2">
+					<h3>
+						<span>Capacidade</span><br>Eficiência Energética
+					</h3>
+					<p>Aumentar a produção e uso de biogás como fonte de energia
+						sustentável.</p>
+				</div>
+			</article>
 
-                <div class="img-instru-box">
-                    <img src="comofunciona/conexão.jpg" alt="iconm">
-                </div>
+		</div>
+	</section>
+	<!-- Fim. -->
 
-                <div class="txt-instru-box">
-                    <h4><span>Conexão</span></h4>
-                    <p>Usuários de biogás buscam resíduos específicos e a plataforma faz a conexão entre oferta e demanda.</p>
-                </div>
-            </article>
 
-            <article class="instru-box">
+	<!-- Saiba Mais -->
+	<section class="hoteis">
+		<div class="interface">
 
-                <div class="img-instru-box">
-                    <img src="comofunciona/negociação.jpg" alt="iconm">
-                </div>
+			<h3>
+				Quer fazer parte de um <span>Mundo sustentavel?</span>
+			</h3>
+			<p>A sustentabilidade é a abertura para o futuro</p>
+			<a th:href="@{/email}">
+				<button>Mande um E-mail!</button>
+			</a>
+		</div>
+		<div class="overley"></div>
+	</section>
+	<!-- Fim. -->
 
-                <div class="txt-instru-box">
-                    <h4><span>Negociação e Logística</span></h4>
-                    <p>Ferramentas integradas para negociação de preços, agendamento de coletas e coordenação logística.</p>
-                </div>
-            </article>
+	<!-- Como funciona -->
+	<section class="como-funciona">
+		<div class="interface">
 
-        </div>
-    </div>
-</section>
-<!-- Fim. -->
+			<div class="txt-funciona">
+				<h3>
+					Como <span>Funciona?</span>
+				</h3>
+			</div>
 
-<!-- Contato -->
-<section class="Contato">
-    <div class="interface">
+			<div class="instrucoes">
+				<article class="instru-box">
 
-        <article class="txt-contato">
-            <h3>Fale agora
-                Com a <span>nossa Equipe</span></h3>
-        </article>
+					<div class="img-instru-box">
+						<img th:src="${Cadastro}" alt="iconm">
+					</div>
 
-        <article class="icons-contato">
-            <a href="chat.html">
-                <button><p>Iniciar um Chat!</button>
-            </a>
+					<div class="txt-instru-box">
+						<h4>
+							<span>Faz o Cadastro</span>
+						</h4>
+						<p>Produtores e usuários de resíduos orgânicos se cadastram na
+							plataforma.</p>
+					</div>
+				</article>
 
-        </article>
-    </div>
-</section>
-<!-- Fim. -->
+				<article class="instru-box">
 
-<!-- Rodape -->
-<footer>
-    <div class="interface">
-        <section class="top-footer">
-            <a href="#"><button><i class="bi bi-instagram"></i></button></a>
-            <a href="#"><button><i class="bi bi-envelope"></i></button></a>
-            <a href="#"><button><i class="bi bi-github"></i></button></a>
-        </section>
+					<div class="img-instru-box">
+						<img th:src="${Residuos}" alt="iconm">
+					</div>
 
-        <div class="middle-footer">
-            <a href="#">Suporte</a>
-            <a href="#">Informacoes</a>
-            <a href="#">Parcerias</a>
-        </div>
+					<div class="txt-instru-box">
+						<h4>
+							<span>Faz o Anúncio de Resíduos</span>
+						</h4>
+						<p>Produtores anunciam os resíduos disponíveis, especificando
+							tipo, quantidade e localização.</p>
+					</div>
+				</article>
 
-        <section class="bottom-footer">
-            <p> &copy; Todos os direitos reservados</p>
-        </section>
-    </div>
-</footer>
-<!-- Fim. -->
+				<article class="instru-box">
+
+					<div class="img-instru-box">
+						<img th:src="${Conexão}" alt="iconm">
+					</div>
+
+					<div class="txt-instru-box">
+						<h4>
+							<span>Conexão</span>
+						</h4>
+						<p>Usuários de biogás buscam resíduos específicos e a
+							plataforma faz a conexão entre oferta e demanda.</p>
+					</div>
+				</article>
+
+				<article class="instru-box">
+
+					<div class="img-instru-box">
+						<img th:src="${Negociação}" alt="iconm">
+					</div>
+
+					<div class="txt-instru-box">
+						<h4>
+							<span>Negociação e Logística</span>
+						</h4>
+						<p>Ferramentas integradas para negociação de preços,
+							agendamento de coletas e coordenação logística.</p>
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</section>
+	<!-- Fim. -->
+
+	<!-- Contato -->
+	<section class="Contato">
+		<div class="interface">
+
+			<article class="txt-contato">
+				<h3>
+					Fale agora Com a <span>nossa Equipe</span>
+				</h3>
+			</article>
+
+			<article class="icons-contato">
+				<a th:href="chat.html"> <!-- HREF do chat -->
+					<button>
+						<p>Iniciar um Chat!
+					</button>
+				</a>
+
+			</article>
+		</div>
+	</section>
+	<!-- Fim. -->
+
+	<!-- Rodape -->
+	<footer>
+		<div class="interface">
+			<section class="top-footer">
+				<a href="#"><button>
+						<i class="bi bi-instagram"></i>
+					</button></a> <a href="#"><button>
+						<i class="bi bi-envelope"></i>
+					</button></a> <a href="#"><button>
+						<i class="bi bi-github"></i>
+					</button></a>
+			</section>
+
+			<div class="middle-footer">
+			
+				<!-- Adicionar href, informações e parcerias -->
+				<a href="#">Suporte</a> <a href="#">Informacoes</a> <a href="#">Parcerias</a> 
+			</div>
+
+			<section class="bottom-footer">
+				<p>&copy; Todos os direitos reservados</p>
+			</section>
+		</div>
+	</footer>
+	<!-- Fim. -->
 </body>
 </html>

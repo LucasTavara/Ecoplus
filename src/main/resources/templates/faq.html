@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleeco.css">
-    <link rel="stylesheet" href="css/responsive.css" media="screen">
-    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" th:href="@{/css/styleeco.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/faq.css}">
 
 
     <!-- Iconis Usados No BootStrap -->
@@ -15,13 +15,13 @@
 
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- /Fim -->
 
     <!-- Scripts de JS -->
-    <script src="js/menu.js" defer></script>
-    <script src="js/btn-menu-mob.js" defer></script>
+    <script th:src="@{/js/menu.js}" defer></script>
+    <script th:src="@{/js/btn-menu-mob.js}" defer></script>
     <!-- Fim -->
     <title>Ecoplus</title>
 </head>
@@ -35,8 +35,8 @@
     <div class="interface">
         <section class="logo">
 
-            <img class="logo-branca"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
-            <img class="logo-preto"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
+            <img class="logo-branca"  th:src="${LogoCinza}" alt="logotipo" width="88px" height="88px">
+            <img class="logo-preto"  th:src="${LogoPreta}" alt="logotipo" width="88px" height="88px">
 
         </section>
         <!-- Fim. -->
@@ -46,9 +46,9 @@
         <section class="menu-desktop">
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
+                    <li><a th:href="@{/}">Inicio</a></li>
+                    <li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+                    <li><a th:href="@{/faq}">Biogás</a></li>
                 </ul>
             </nav>
         </section>
@@ -56,7 +56,7 @@
 
         <!--Botão  de Contato *Entrar > Login -->
         <section class="btn-contato">
-            <a href="login.html">
+            <a href="@{/login}">
                 <button>Entrar</button>
             </a>
         </section>
@@ -74,9 +74,9 @@
         <section class="menu-mobile" id="menu-mobile">
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
+                  	<li><a th:href="@{/}">Inicio</a></li>
+                    <li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+                    <li><a th:href="@{/faq}">Biogás</a></li>
                 </ul>
             </nav>
         </section>
@@ -89,7 +89,7 @@
     <div class="interface">
         <div class="txt-hero">
             <h1>Perguntas mais frequentes sobre o<span>Biogás</span></h1>
-            <p></span></p>
+            <p><span></span></p>
 
         </div>
     </div>

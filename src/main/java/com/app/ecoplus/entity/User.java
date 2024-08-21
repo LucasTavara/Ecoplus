@@ -1,5 +1,7 @@
 package com.app.ecoplus.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,50 +11,62 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nomeCompleto;
+    private String email;
+    private String cidade;
+    private String serviçoOferecido;
+    private Integer Documento;
 
-    private String Nome;
-    private String Sobrenome;
-    private String Cidade;
-    private int Cep;
 
 
-    public Long getId() {
+
+    
+	public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getEmail() {
+		return email;
+	}
 
-    public String getNome() {
-        return Nome;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public String getSobrenome() {
-        return Sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        Sobrenome = sobrenome;
-    }
-
-    public int getCep() {
-        return Cep;
-    }
-
-    public void setCep(int cep) {
-        Cep = cep;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getCidade() {
-        return Cidade;
+        return cidade;
     }
 
     public void setCidade(String cidade) {
-        Cidade = cidade;
+        this.cidade = cidade;
+    }
+
+    public String getServiçoOferecido() {
+        return serviçoOferecido;
+    }
+
+    public void setServiçoOferecido(String serviçoOferecido) {
+        this.serviçoOferecido = serviçoOferecido;
+    }
+
+    public Integer getDocumento() {
+        return Documento;
+    }
+
+    public void setDocumento(Integer documento) {
+        Documento = documento;
     }
 }

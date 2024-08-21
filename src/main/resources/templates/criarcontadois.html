@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt=br">
+<html lang="pt=br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,12 @@
     <title>Criar conta  2</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <!--JS & jQuery-->
-    <script type="text/javascript" src="js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}" th:integrity="@{sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=}" th:crossorigin="@{anonymous}"></script>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 
     <div id="container">
         <div class="banner">
-            <img src="" alt="imagem-login">
+            <img src="" alt="imagem-login">	<!-- src ausente -->
         </div>
 
         <div class="box-login">
@@ -42,11 +42,11 @@
                     <label for="termos" style="color: #3d3d3d;">li e aceito os termos</label>
                 </div>
 
-                <a href='index.html'><button>Criar Conta</button></a>
+                <a th:href='@{/}'><button>Criar Conta</button></a>
             </div>
         </div>
     </div>
-
+</div>
     <script>
         $('#termo').click(() => {
             const div = $('<div>').attr('style',`

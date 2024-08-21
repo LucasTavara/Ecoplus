@@ -36,16 +36,23 @@ public class UserService {
     não foi encontrado.
      */
 
-    public User updateUser(User user) {
+    public User updateUser(Long id, User user) {
     Optional<User> newUser = findById(user.getId());
-    User existingUser = null;
     if (newUser.isPresent()) {
-        existingUser = newUser.get();
-        existingUser.setNome(user.getNome());
+    	User existingUser = newUser.get();
+        existingUser.setNomeCompleto(user.getNomeCompleto());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setCidade(user.getCidade());
+        existingUser.setServiçoOferecido(user.getServiçoOferecido());
+        existingUser.setDocumento(user.getDocumento());
         return userRepository.save(existingUser);
     }else {
         throw new RuntimeException("User not found with ID:" + user.getId());
     }
+    
+    }
+    public void deleteUser(Long id) {
+    	userRepository.deleteById(id);
+    }
 
-}
 }

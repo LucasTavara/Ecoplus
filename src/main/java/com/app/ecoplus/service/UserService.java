@@ -1,11 +1,18 @@
 package com.app.ecoplus.service;
+
+
+import com.app.ecoplus.DTO.UserDto;
+
 import com.app.ecoplus.entity.User;
 import com.app.ecoplus.repository.UserRepository;
+import com.app.ecoplus.service.Exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class UserService {
@@ -13,46 +20,53 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     //Uma lista do tipo User que retorna todos os usuários
+    public List<User> salvar() {return userRepository.findAll();}
 
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+
+    //Busca por Id a Conexão estabelecida
+    public User findById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Conexao not found with id: " + id));
     }
 
-    //Busca um usuário pelo seu id, tendo a possibilidade de haver ou não um valor nulo
+    // Criação um novo usuário com todas as informações necessárias e salvar o mesmo no banco de dados
+    public User created(User user) {return userRepository.save(user);}
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    //Update
+    public ResponseEntity<?> updateUser(Long id, UserDto userDto) {
+        var conexaoEntityOptional = userRepository.findById(id);
+
+        if (conexaoEntityOptional.isPresent()) {
+            var user = conexaoEntityOptional.get();
+
+            if (userDto.getNomeCompleto() != null) {
+                user.setNomeCompleto(userDto.getNomeCompleto());
+            }
+            if (userDto.getEmail() != null) {
+                user.setEmail(userDto.getEmail());
+            }
+            if (userDto.getCidade() != null) {
+                user.setCidade(userDto.getCidade());
+            }
+            if (userDto.getServiçoOferecido() != null) {
+                user.setServiçoOferecido(userDto.getServiçoOferecido());
+            }
+            if (userDto.getDocumento() != null) {
+                user.setDocumento(userDto.getDocumento());
+            }
+
+            userRepository.save(user);
+            return ResponseEntity.ok("Conexão atualizada com sucesso");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conexão não encontrada");
+        }
     }
 
-    //Cria um novo usuário com todas as informações necessárias e salva o mesmo no banco de dados
-
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
-    /*Verifica se o usuário existe pelo seu id antes de atualizar, se o mesmo existir, as alterações
-    serão salvas no banco de dados, senão,o método lança uma exceção com a mensagem de que o usuário
-    não foi encontrado.
-     */
-
-    public User updateUser(Long id, User user) {
-    Optional<User> newUser = findById(user.getId());
-    if (newUser.isPresent()) {
-    	User existingUser = newUser.get();
-        existingUser.setNomeCompleto(user.getNomeCompleto());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setCidade(user.getCidade());
-        existingUser.setServiçoOferecido(user.getServiçoOferecido());
-        existingUser.setDocumento(user.getDocumento());
-        return userRepository.save(existingUser);
-    }else {
-        throw new RuntimeException("User not found with ID:" + user.getId());
-    }
-    
-    }
-    public void deleteUser(Long id) {
-    	userRepository.deleteById(id);
+    //Delete
+    public User deleteUser(Long id) {userRepository.deleteById(id);
+        return findById(id);
     }
 
 }

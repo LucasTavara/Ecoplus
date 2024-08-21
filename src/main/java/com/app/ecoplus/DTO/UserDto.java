@@ -1,25 +1,36 @@
 package com.app.ecoplus.DTO;
 
-import java.time.LocalDate;
+import com.app.ecoplus.entity.Conexao;
+import com.app.ecoplus.entity.User;
+import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
 
-public class UserDto {
+@Data
+public class UserDto  implements Serializable {
 
     private Long id;
-    private String nome;
+    private String nomeCompleto;
     private String email;
+    private String cidade;
+    private String serviçoOferecido;
     private Integer Documento;
 
     public UserDto() {
     }
 
-    public UserDto(Long id, String nome, String email) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
 
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.nomeCompleto = user.getNomeCompleto();
+        this.email = user.getEmail();
+        this.cidade = user.getCidade();
+        this.serviçoOferecido = user.getServiçoOferecido();
+        this.Documento = user.getDocumento();
     }
+    public User  tranUser(){return new User( id,  nomeCompleto, email,  cidade, serviçoOferecido, Documento); }
+
+
 
     public Long getId() {
         return id;
@@ -29,12 +40,12 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getEmail() {
@@ -43,6 +54,22 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getServiçoOferecido() {
+        return serviçoOferecido;
+    }
+
+    public void setServiçoOferecido(String serviçoOferecido) {
+        this.serviçoOferecido = serviçoOferecido;
     }
 
     public Integer getDocumento() {
@@ -55,11 +82,13 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "UserDto{" +
                 "id=" + id +
-                ", nome='" + nome + '\'' +
+                ", nomeCompleto='" + nomeCompleto + '\'' +
                 ", email='" + email + '\'' +
-                ", documento=" + Documento +
+                ", cidade='" + cidade + '\'' +
+                ", serviçoOferecido='" + serviçoOferecido + '\'' +
+                ", Documento=" + Documento +
                 '}';
     }
 }

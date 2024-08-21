@@ -1,16 +1,14 @@
 package com.app.ecoplus.repository;
 
-import java.time.LocalDate;
-import java.util.Optional;
-
+import com.app.ecoplus.entity.Conexao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.ecoplus.entity.User;
 
 
 @Repository
-public interface UserRepository  extends JpaRepository<User, Long> {
+public interface ConexaoRepository extends JpaRepository<Conexao, Long> {
+
 
 
 }

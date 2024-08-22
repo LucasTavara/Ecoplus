@@ -1,8 +1,8 @@
 package com.app.ecoplus.entity;
-import java.time.LocalDate;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,14 +12,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Fornecedor")
 @Data
 @NoArgsConstructor
-public class User {
+public class Fornecedor {
 
-	
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
@@ -27,31 +26,21 @@ public class User {
     @NotBlank
     private String email;
     @NotBlank
-    private String cidade;
-    @NotBlank
     private String estado;
     @NotBlank
-    private String serviçoOferecido;
+    private String cidade;
+    @NotBlank
+    private String servicoOferecido;
     @NotNull
     private Integer Documento;
 
-    
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-    
-    public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -59,6 +48,22 @@ public class User {
 
     public void setNomeCompleto(String nomeCompleto) {
         this.nomeCompleto = nomeCompleto;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCidade() {
@@ -69,12 +74,12 @@ public class User {
         this.cidade = cidade;
     }
 
-    public String getServiçoOferecido() {
-        return serviçoOferecido;
+    public String getServicoOferecido() {
+        return servicoOferecido;
     }
 
-    public void setServiçoOferecido(String serviçoOferecido) {
-        this.serviçoOferecido = serviçoOferecido;
+    public void setServicoOferecido(String servicoOferecido) {
+        this.servicoOferecido = servicoOferecido;
     }
 
     public Integer getDocumento() {
@@ -83,15 +88,5 @@ public class User {
 
     public void setDocumento(Integer documento) {
         Documento = documento;
-    }
-    private String servicoOferecido;
-    private String documento;
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 }

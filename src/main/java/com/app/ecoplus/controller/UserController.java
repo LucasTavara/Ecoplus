@@ -1,6 +1,7 @@
 package com.app.ecoplus.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,41 +16,52 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.ecoplus.DTO.UserDto;
 import com.app.ecoplus.entity.User;
 import com.app.ecoplus.service.UserService;
+import com.app.ecoplus.util.UserMapper;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
-	private final UserService userService;
-	
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
-	
+    
+    private final UserService userService;
+    private final UserMapper userMapper;
+    
+    public UserController(UserService userService, UserMapper userMapper) {
+        this.userService = userService;
+        this.userMapper = userMapper;
+    }
+    
     // Create
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
-
-    // Read
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+        UserDto createdUserDto = userService.createUser(userDto);
+        return ResponseEntity.ok(createdUserDto);
+    }    // Read
+    
     @GetMapping
-    public List<User> getAllUser() {
-        return userService.getAllUser();
+    public ResponseEntity<List<UserDto>> getAllUser() {
+        List<User> users = userService.getAllUser();
+        List<UserDto> userDtos = users.stream()
+                                      .map(userMapper::toDto)
+                                      .collect(Collectors.toList());
+        return ResponseEntity.ok(userDtos);
     }
-
-    // Read com ID
+    
+    // Read by ID
     @GetMapping("/findById/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
         return userService.findById(id)
-                .map(user -> ResponseEntity.ok().body(user))
+                .map(userDto -> ResponseEntity.ok(userDto))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     // Update
     @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUser(id, user));
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
+        if (!userService.findById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        UserDto updatedUserDto = userService.updateUser(id, userDto);
+        return ResponseEntity.ok(updatedUserDto);
     }
 
     // Delete
@@ -59,22 +71,24 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
     
-    
-    // Reads personalizadas
-    @GetMapping("/{nomeCompleto}/{id}")
-    public ResponseEntity<User> showIdAndName(@PathVariable Long id, @PathVariable String nomeCompleto) {
+    // Read by name and ID
+    @GetMapping("/idandname/{id}/{nomeCompleto}")
+    public ResponseEntity<UserDto> showIdAndName(@PathVariable Long id, @PathVariable String nomeCompleto) {
         return userService.idAndName(id, nomeCompleto)
-                .map(user -> ResponseEntity.ok().body(user))
+                .map(userDto -> ResponseEntity.ok(userDto))
                 .orElse(ResponseEntity.notFound().build());
     }
     
-    @GetMapping("/{nomeCompleto}")
-    public ResponseEntity<List<User>> findByNome(@PathVariable String nomeCompleto) {
-        List<User> users = userService.findByNomeCompleto(nomeCompleto);
-        if (users.isEmpty()) {
-            return ResponseEntity.noContent().build();  
-        } else {
-            return ResponseEntity.ok(users);
+    // Read by name
+    @GetMapping("/byNome/{nomeCompleto}")
+    public ResponseEntity<List<UserDto>> findByNome(@PathVariable String nomeCompleto) {
+        List<UserDto> userDtos = userService.findByNomeCompleto(nomeCompleto).stream()
+                .map(userMapper::toDto)
+                .collect(Collectors.toList());
+        if (userDtos.isEmpty()) {
+            return ResponseEntity.noContent().build(); 
+        }else {
+            return ResponseEntity.ok(userDtos);
         }
     }
 }

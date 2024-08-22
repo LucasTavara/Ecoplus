@@ -1,18 +1,20 @@
 package com.app.ecoplus.repository;
 
-import com.app.ecoplus.entity.Fornecedor;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import com.app.ecoplus.entity.Fornecedor;
 
 @Repository
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
 
-    Optional<Fornecedor> findById(Long Id);
+    @Override
+	Optional<Fornecedor> findById(Long id);
 
-    List<Fornecedor> findByCidade(String Cidade);
+    List<Fornecedor> findByCidade(String cidade);
 
     List<Fornecedor> findByServicoOferecido(String servicoOferecido);
 
@@ -20,5 +22,5 @@ public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
 
     List<Fornecedor> findByNomeCompleto(String nomeCompleto);
 
-    List<Fornecedor> findByDocumento(String documento);
+    List<Fornecedor> findByDocumento(Integer documento);
 }

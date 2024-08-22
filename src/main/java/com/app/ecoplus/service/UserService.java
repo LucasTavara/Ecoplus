@@ -12,18 +12,18 @@ import com.app.ecoplus.repository.UserRepository;
 @Service
 public class UserService {
 
-	
+
     private final UserRepository userRepository;
 
     private UserService(UserRepository userRepository) {
     	this.userRepository = userRepository;
     }
-    
+
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
- 
+
     public User updateUser(Long id, User user) {
         if (userRepository.existsById(id)) {
         	user.setId(id);
@@ -44,14 +44,14 @@ public class UserService {
     public List<User> getAllUser() {
         return userRepository.findAll();
     }
-    
+
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
     public List<User> findByNomeCompleto(String nomeCompleto){
     	return userRepository.findByNomeCompleto(nomeCompleto);
     }
-    
+
     public Optional<User> getEmail(String email){
     	return userRepository.findByEmail(email);
     }
@@ -59,24 +59,24 @@ public class UserService {
     public List<User> getCidade(String cidade){
     	return userRepository.findByCidade(cidade);
     }
-    
-    public List<User> getDocumento(String documento){
+
+    public List<User> getDocumento(Integer documento){
     	return userRepository.findByDocumento(documento);
     }
-    
+
     public List<User> findByServicoFornecido(String servicoFornecido){
     	return userRepository.findByServicoOferecido(servicoFornecido);
     }
-    
+
     public Optional<User> idAndName(Long id, String nomeCompleto){
     	   Optional<User> user = userRepository.findById(id);
-    	    
+
     	    if (user.isPresent() && user.get().getNomeCompleto().equals(nomeCompleto)) {
     	        return user;
     	    }
     	    else {
     	    	return Optional.empty();
     	    }
-    
+
     }
 }

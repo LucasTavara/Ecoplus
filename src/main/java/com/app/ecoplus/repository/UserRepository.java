@@ -11,19 +11,20 @@ import com.app.ecoplus.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	Optional <User> findById(Long Id);
-	
-	List<User> findByCidade(String Cidade);
+	@Override
+	Optional <User> findById(Long id);
+
+	List<User> findByCidade(String cidade);
 
     List<User> findByEstado(String Estado);
-	
+
 	List<User> findByServicoOferecido(String servicoOferecido);
-	
+
     Optional<User> findByEmail(String email);
 
     List<User> findByNomeCompleto(String nomeCompleto);
-    
-    List<User> findByDocumento(String documento);
+
+    List<User> findByDocumento(Integer documento);
 
 
 }

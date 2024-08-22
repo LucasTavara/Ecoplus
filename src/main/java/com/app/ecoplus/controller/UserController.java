@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.ecoplus.DTO.UserDto;
 import com.app.ecoplus.entity.User;
 import com.app.ecoplus.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
+
 	private final UserService userService;
-	
+
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
+	
+	
 	
     // Create
     @PostMapping
@@ -58,8 +59,8 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
-    
-    
+
+
     // Reads personalizadas
     @GetMapping("/{nomeCompleto}/{id}")
     public ResponseEntity<User> showIdAndName(@PathVariable Long id, @PathVariable String nomeCompleto) {
@@ -67,12 +68,12 @@ public class UserController {
                 .map(user -> ResponseEntity.ok().body(user))
                 .orElse(ResponseEntity.notFound().build());
     }
-    
+
     @GetMapping("/{nomeCompleto}")
     public ResponseEntity<List<User>> findByNome(@PathVariable String nomeCompleto) {
         List<User> users = userService.findByNomeCompleto(nomeCompleto);
         if (users.isEmpty()) {
-            return ResponseEntity.noContent().build();  
+            return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(users);
         }

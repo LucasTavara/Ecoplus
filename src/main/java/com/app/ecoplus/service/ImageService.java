@@ -16,7 +16,6 @@ public class ImageService {
 		imageMap.put("LogoCinza", "/img/logo/LogoCinza.png");
 		imageMap.put("LogoPreta","/img/logo/LogoPreta.png");
 
-
 	    imageMap.put("Imagem1", "/img/imagem 1.jpg");
 		imageMap.put("Imagem2", "/img/imagem 2.jpg");
 		imageMap.put("Imagem3", "/img/imagem 3.jpg");
@@ -78,7 +77,7 @@ public class ImageService {
 	}
 
 
-	public Map<String, String> imagesEmail(){
+	public Map<String, String> imagesForm(){
 		Map <String, String> imageMap = new HashMap<>();
 
 		//		Logo

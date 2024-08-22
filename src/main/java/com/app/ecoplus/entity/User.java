@@ -1,27 +1,25 @@
 package com.app.ecoplus.entity;
-
 import java.time.LocalDate;
-
 import jakarta.persistence.*;
-<<<<<<< HEAD
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-=======
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
->>>>>>> b479bd4d71bfdf48fa87740c487dcc9eb0e471f6
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
-@Getter
-@Setter
-@AllArgsConstructor
+@Table(name = "User")
+@Data
 @NoArgsConstructor
 public class User {
 
-    @Id
+	
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
@@ -35,10 +33,55 @@ public class User {
     @NotBlank
     private Integer Documento;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b479bd4d71bfdf48fa87740c487dcc9eb0e471f6
     
+	public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getServiçoOferecido() {
+        return serviçoOferecido;
+    }
+
+    public void setServiçoOferecido(String serviçoOferecido) {
+        this.serviçoOferecido = serviçoOferecido;
+    }
+
+    public Integer getDocumento() {
+        return Documento;
+    }
+
+    public void setDocumento(Integer documento) {
+        Documento = documento;
+    }
+    private String servicoOferecido;
+    private String documento;
 }

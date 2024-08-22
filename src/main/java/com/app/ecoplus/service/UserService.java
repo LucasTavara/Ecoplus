@@ -1,72 +1,82 @@
 package com.app.ecoplus.service;
 
 
-import com.app.ecoplus.DTO.UserDto;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.app.ecoplus.entity.User;
 import com.app.ecoplus.repository.UserRepository;
-import com.app.ecoplus.service.Exception.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+	
+    private final UserRepository userRepository;
 
-
-    //Uma lista do tipo User que retorna todos os usuários
-    public List<User> salvar() {return userRepository.findAll();}
-
-
-    //Busca por Id a Conexão estabelecida
-    public User findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Conexao not found with id: " + id));
+    private UserService(UserRepository userRepository) {
+    	this.userRepository = userRepository;
+    }
+    
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
-    // Criação um novo usuário com todas as informações necessárias e salvar o mesmo no banco de dados
-    public User created(User user) {return userRepository.save(user);}
-
-    //Update
-    public ResponseEntity<?> updateUser(Long id, UserDto userDto) {
-        var conexaoEntityOptional = userRepository.findById(id);
-
-        if (conexaoEntityOptional.isPresent()) {
-            var user = conexaoEntityOptional.get();
-
-            if (userDto.getNomeCompleto() != null) {
-                user.setNomeCompleto(userDto.getNomeCompleto());
-            }
-            if (userDto.getEmail() != null) {
-                user.setEmail(userDto.getEmail());
-            }
-            if (userDto.getCidade() != null) {
-                user.setCidade(userDto.getCidade());
-            }
-            if (userDto.getServiçoOferecido() != null) {
-                user.setServiçoOferecido(userDto.getServiçoOferecido());
-            }
-            if (userDto.getDocumento() != null) {
-                user.setDocumento(userDto.getDocumento());
-            }
-
-            userRepository.save(user);
-            return ResponseEntity.ok("Conexão atualizada com sucesso");
+ 
+    public User updateUser(Long id, User user) {
+        if (userRepository.existsById(id)) {
+        	user.setId(id);
+            return userRepository.save(user);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conexão não encontrada");
+            throw new RuntimeException("User not found");
         }
     }
 
-    //Delete
-    public User deleteUser(Long id) {userRepository.deleteById(id);
-        return findById(id);
+    public void deleteUser(Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+    
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+    public List<User> findByNomeCompleto(String nomeCompleto){
+    	return userRepository.findByNomeCompleto(nomeCompleto);
+    }
+    
+    public Optional<User> getEmail(String email){
+    	return userRepository.findByEmail(email);
+    }
+
+    public List<User> getCidade(String cidade){
+    	return userRepository.findByCidade(cidade);
+    }
+    
+    public List<User> getDocumento(String documento){
+    	return userRepository.findByDocumento(documento);
+    }
+    
+    public List<User> findByServicoFornecido(String servicoFornecido){
+    	return userRepository.findByServicoOferecido(servicoFornecido);
+    }
+    
+    public Optional<User> idAndName(Long id, String nomeCompleto){
+    	   Optional<User> user = userRepository.findById(id);
+    	    
+    	    if (user.isPresent() && user.get().getNomeCompleto().equals(nomeCompleto)) {
+    	        return user;
+    	    }
+    	    else {
+    	    	return Optional.empty();
+    	    }
+    
+    }
 }

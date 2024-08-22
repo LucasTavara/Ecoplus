@@ -9,12 +9,13 @@ import org.springframework.stereotype.Repository;
 
 import com.app.ecoplus.entity.User;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional <User> findById(Long Id);
 	
 	List<User> findByCidade(String Cidade);
+
+    List<User> findByEstado(String Estado);
 	
 	List<User> findByServicoOferecido(String servicoOferecido);
 	

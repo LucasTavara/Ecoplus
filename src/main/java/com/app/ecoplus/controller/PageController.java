@@ -11,26 +11,25 @@ import com.app.ecoplus.service.ImageService;
 
 @Controller
 public class PageController {
-	
-	
+
+
 	private final ImageService imageService;
-	
-	@Autowired
+
 	private PageController(ImageService imageService) {
 		this.imageService = imageService;
 	}
-	
-	
-		
-	
-	
+
+
+
+
+
 	@GetMapping("/")
 	public String index(Model model) {
 		Map <String, String>imageMap = imageService.imagesIndex();
 		model.addAllAttributes(imageMap);
 		return "index";
 	}
-	
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		Map <String, String>imageMap = imageService.imagesLogin();
@@ -44,22 +43,22 @@ public class PageController {
 		model.addAllAttributes(imageMap);
 		return "password";
 	}
-	
-	
+
+
 	@GetMapping("/faq")
 	public String faq(Model model) {
 		Map <String, String>imageMap = imageService.imagesFaq();
 		model.addAllAttributes(imageMap);
 		return "faq";
 	}
-	
+
 	@GetMapping("/email")
 	public String email(Model model) {
 		Map <String, String>imageMap = imageService.imagesEmail();
 		model.addAllAttributes(imageMap);
 		return "email";
 	}
-	
+
 	@GetMapping("/criarconta")
 	public String criarconta() {
 		return "criarconta";
@@ -73,11 +72,11 @@ public class PageController {
 	public String chat() {
 		return "Preencher este local";
 	}
-	
+
 	@GetMapping("/sobrenos")
 	public String sobrenos(Model model) {
 		Map <String, String>imageMap = imageService.imagesSobrenos();
 		model.addAllAttributes(imageMap);
-		return "sobrenos";			
+		return "sobrenos";
 	}
 }

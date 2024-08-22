@@ -65,7 +65,7 @@ header .logo img.logo-preto{
 }
 
 header.rolar{
-    background-image: url('/img/Banner.jpeg');
+    background-image: url('/static/img/Banner.jpeg');
     padding: 3px 0;  /* Tamanho da Barra de navegação */
 
     box-shadow: 0 0 30px #1b3619;  /* sombra da barra */

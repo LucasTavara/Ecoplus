@@ -1,58 +1,27 @@
 package com.app.ecoplus.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "User")
+@Data
+@NoArgsConstructor
 public class User {
 
-    @Id
+	
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String Nome;
-    private String Sobrenome;
-    private String Cidade;
-    private int Cep;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public String getSobrenome() {
-        return Sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        Sobrenome = sobrenome;
-    }
-
-    public int getCep() {
-        return Cep;
-    }
-
-    public void setCep(int cep) {
-        Cep = cep;
-    }
-
-    public String getCidade() {
-        return Cidade;
-    }
-
-    public void setCidade(String cidade) {
-        Cidade = cidade;
-    }
+    private String nomeCompleto;
+    private String email;
+    private String cidade;
+    private String servicoOferecido;
+    private String documento;
 }

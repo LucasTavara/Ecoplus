@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Email</title>
-    <link rel="stylesheet" href="css/email.css"/>
-    <script defer src="js/email.js"></script>
+    <link rel="stylesheet" th:href="@{/css/email.css}"/>
+    <script defer th:src="@{/js/email.js}"></script>
 </head>
 <body>
 <form
@@ -26,6 +26,5 @@
     <textarea name="mensagem" id="mensagem" required></textarea>
     <button type="submit" data-button>Enviar</button>
 </form>
-</a>
 </body>
 </html>

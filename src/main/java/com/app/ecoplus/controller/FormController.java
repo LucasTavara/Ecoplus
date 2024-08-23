@@ -20,7 +20,7 @@ import com.app.ecoplus.service.exception.ObjectNotFoundException;
 
 
 @RestController
-@RequestMapping("/form")
+@RequestMapping("/form-api")
 public class FormController {
 
 
@@ -33,18 +33,15 @@ public class FormController {
     //Criado
     @PostMapping
     public ResponseEntity<Form> createForm(@RequestBody FormDto formDto) {
-        Form form = formService.created(formDto.transformaParaObjeto());
+        Form form = formService.create(formDto.transformaParaObjeto());
         return new ResponseEntity<>(form, HttpStatus.CREATED);
     }
 
     // Busca
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<FormDto>> findAll() {
         List<Form> form = formService.findAll();
-        System.out.println("Forms : " + form); // Adicione um log
-        
         List<FormDto> formDto = form.stream().map(FormDto::new).toList();
-
         return ResponseEntity.ok(formDto);
     }
 
@@ -56,7 +53,7 @@ public class FormController {
     }
     //Update
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateConexao(@PathVariable Long id, @RequestBody FormDto formDto) {
+    public ResponseEntity<Void> updateForm(@PathVariable Long id, @RequestBody FormDto formDto) {
         formService.updateForm(id, formDto);
         return ResponseEntity.noContent().build();
     }

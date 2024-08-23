@@ -37,7 +37,8 @@ public class FormService{
     }
 
     // Criação um novo usuário com todas as informações necessárias e salvar o mesmo no banco de dados
-    public Form created(Form form) {return formRepository.save(form);}
+    public Form create(Form form) {
+    	return formRepository.save(form);}
 
     //Update
     public ResponseEntity<?> updateForm(Long id, FormDto formDto) {
@@ -69,9 +70,12 @@ public class FormService{
     }
 
     //Delete
-    public Form delete(Long id) {
-    	formRepository.deleteById(id);
-        return findById(id);
+    public void delete(Long id) {
+    	  if (formRepository.existsById(id)) {
+              formRepository.deleteById(id);
+          } else {
+              throw new RuntimeException("Form not found");
+          }
     }
 
 }

@@ -56,7 +56,7 @@ button {
 body {
     width: 100%;            /* fundo de tras*/
     height: 100vh;
-    background-image: url('');
+    background-image: url();
     background-repeat:repeat;
     background-size: 100%;
     background-color: #CAD9A9;
@@ -73,7 +73,7 @@ img{
 #fundo-login{
     width: 100%;            /* fundo */
     height: 100vh;
-    background-image: url('');
+    background-image: url();
     background-repeat: no-repeat;
     background-size: 100%;
 
@@ -94,17 +94,17 @@ img{
         align-items: center;
     }
 
-        #container .banner { /* Login box */
-            width: 600px;
-            height: 550px;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-            background-image: url('/imgcabeçalho/Banner.jpeg');  /* banner logo*/
-            display: none;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-        }
+       #container .banner { /* Login box */
+           width: 600px;
+           height: 550px;
+           border-top-left-radius: 10px;
+           border-bottom-left-radius: 10px;
+           background-image: url(../img/Banner.jpeg);  /* banner logo*/
+           display: none;
+           flex-direction: column;
+           justify-content: space-evenly;
+           align-items: center;
+       }
 
         #container .box-login {      /* Login *box */
             width: 350px;

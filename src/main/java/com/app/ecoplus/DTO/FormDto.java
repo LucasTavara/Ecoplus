@@ -15,7 +15,6 @@ public class FormDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	
     private String nomeCompleto;
     private String empresa;
     private String email;
@@ -24,7 +23,7 @@ public class FormDto implements Serializable {
     
 
     public Form transformaParaObjeto(){
-        return new Form(id,nomeCompleto,empresa,cidade, email, mensagem);
+        return new Form(null, nomeCompleto, empresa, cidade, email, mensagem);
     }
     
     public FormDto(Form form) {
@@ -36,7 +35,6 @@ public class FormDto implements Serializable {
         this.mensagem = form.getMensagem();
     }
 	public FormDto(Long id, String nomeCompleto, String empresa, String email, String cidade, String mensagem) {
-		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.empresa = empresa;

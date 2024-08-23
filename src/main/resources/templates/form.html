@@ -4,26 +4,29 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Form</title>
+    <title>Formulário</title>
     <link rel="stylesheet" th:href="@{/css/form.css}"/>
     <script defer th:src="@{/js/form.js}"></script>
 </head>
 <body>
 <form
-        action="https://formsubmit.co/ajax/nickolas@tigercodes.com.br"
-        method="POST"
-        data-form
+        th:action="@{/submitForm}" th:object="${formDto}" method="post"
 >
-    <label for="nome">Nome</label>
-    <input type="text" name="nome" id="nome" required />
-    <label for="nome">Empresa</label>
-    <input type="text" name="nome" id="nome" required />
-    <label for="nome">Cidade</label>
-    <input type="text" name="nome" id="nome" required />
+    <label for="nomeCompleto">Nome Completo</label>
+    <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />
+    
+    <label for="empresa">Empresa</label>
+    <input type="text" name="empresa" id="empresa" th:field="*{empresa}" required />
+    
     <label for="email">E-mail</label>
-    <input type="email" name="email" id="email" required />
+    <input type="email" name="email" id="email" th:field="*{email}" required />
+    
+    <label for="cidade">Cidade</label>
+    <input type="text" name="cidade" id="cidade" th:field="*{cidade}" required />
+    
     <label for="mensagem">Mensagem</label>
-    <textarea name="mensagem" id="mensagem" required></textarea>
+    <textarea name="mensagem" id="mensagem" th:field="*{mensagem}" required></textarea>
+    
     <button type="submit" data-button>Enviar</button>
 </form>
 </body>

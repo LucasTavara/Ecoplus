@@ -25,7 +25,6 @@ public class FormDto implements Serializable {
     public Form transformaParaObjeto(){
         return new Form(null, nomeCompleto, empresa, cidade, email, mensagem);
     }
-    
     public FormDto(Form form) {
         this.id = form.getId();
         this.nomeCompleto = form.getNome();

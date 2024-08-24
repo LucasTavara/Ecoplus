@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.app.ecoplus.DTO.FormDto;
 import com.app.ecoplus.service.ImageService;
 
+
 @Controller
+
 public class PageController {
 
 
@@ -29,7 +31,7 @@ public class PageController {
 		return "index";
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/loginconta")
 	public String login(Model model) {
 		Map <String, String>imageMap = imageService.imagesLogin();
 		model.addAllAttributes(imageMap);

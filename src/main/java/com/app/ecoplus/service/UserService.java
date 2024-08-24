@@ -19,11 +19,12 @@ public class UserService {
     	this.userRepository = userRepository;
     }
 
+    //Criar
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
-
+    //Atualizar
     public User updateUser(Long id, User user) {
         if (userRepository.existsById(id)) {
         	user.setId(id);
@@ -33,6 +34,7 @@ public class UserService {
         }
     }
 
+    //Deletar
     public void deleteUser(Long id) {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
@@ -40,7 +42,7 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
     }
-
+    // Listar
     public List<User> getAllUser() {
         return userRepository.findAll();
     }
@@ -50,18 +52,6 @@ public class UserService {
     }
     public List<User> findByNomeCompleto(String nomeCompleto){
     	return userRepository.findByNomeCompleto(nomeCompleto);
-    }
-
-    public Optional<User> getEmail(String email){
-    	return userRepository.findByEmail(email);
-    }
-
-    public List<User> getCidade(String cidade){
-    	return userRepository.findByCidade(cidade);
-    }
-
-    public List<User> getDocumento(Integer documento){
-    	return userRepository.findByDocumento(documento);
     }
 
     public List<User> findByServicoFornecido(String servicoFornecido){

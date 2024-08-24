@@ -1,17 +1,17 @@
 package com.app.ecoplus.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
 
@@ -21,14 +21,19 @@ public class User {
     @NotBlank
     private String nomeCompleto;
     @NotBlank
+    private String  senha;
+    @NotBlank
     private String email;
     @NotBlank
     private String cidade;
     @NotBlank
     private String estado;
-    @NotBlank
+
     private String servicoOferecido;
     @NotNull
     private Integer documento;
+
+
+
 
 }

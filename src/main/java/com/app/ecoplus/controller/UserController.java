@@ -1,40 +1,79 @@
 package com.app.ecoplus.controller;
 
-import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.app.ecoplus.DTO.LoginRequestDto;
+import com.app.ecoplus.DTO.RegisterRequestDto;
+import com.app.ecoplus.DTO.ResponseDto;
+import com.app.ecoplus.DTO.UserDto;
 
 import com.app.ecoplus.entity.User;
+
+import com.app.ecoplus.repository.UserRepository;
+import com.app.ecoplus.security.TokenService;
 import com.app.ecoplus.service.UserService;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
 	private final UserService userService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
-	
-	
-	
-    // Create
-    @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    //Created
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody LoginRequestDto body){
+        User user = this.userRepository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
+        if(passwordEncoder.matches(body.senha(), user.getSenha())) {
+            String token = this.tokenService.generateToken(user);
+            return ResponseEntity.ok(new ResponseDto(user.getEmail(), token));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody RegisterRequestDto body){
+        Optional<User> user = this.userRepository.findByEmail(body.email());
+
+        if(user.isEmpty()) {
+            User newUser = new User();
+            newUser.setSenha(passwordEncoder.encode(body.senha()));
+            newUser.setEmail(body.email());
+            newUser.setNomeCompleto(body.nomeCompleto());
+            newUser.setEstado(body.estado());
+            newUser.setCidade(body.cidade());
+            newUser.setDocumento(body.documento());
+            newUser.setServicoOferecido(body.servicoOferecido());
+            this.userRepository.save(newUser);
+
+            String token = this.tokenService.generateToken(newUser);
+            return ResponseEntity.ok(new ResponseDto(newUser.getEmail(), token));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+
+    // Busca
+    @GetMapping
+    public ResponseEntity<List<UserDto>> findAll() {
+        List<User> users = userService.getAllUser();
+        List<UserDto> userDtos = users.stream().map(UserDto::new).toList();
+        return ResponseEntity.ok(userDtos);
     }
 
     // Read
-    @GetMapping
+    @GetMapping("/")
     public List<User> getAllUser() {
         return userService.getAllUser();
     }
@@ -48,13 +87,13 @@ public class UserController {
     }
 
     // Update
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(id, user));
     }
 
     // Delete
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();

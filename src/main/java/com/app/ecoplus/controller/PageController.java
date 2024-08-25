@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.app.ecoplus.DTO.FormDto;
+import com.app.ecoplus.DTO.RegisterRequestDto;
 import com.app.ecoplus.service.ImageService;
 
 
@@ -62,7 +63,8 @@ public class PageController {
 	}
 
 	@GetMapping("/criarconta")
-	public String criarconta() {
+	public String criarconta(Model model) {
+	    model.addAttribute("registerRequestDto", new RegisterRequestDto("","","","","",1));
 		return "criarconta";
 	}
 

@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 // Exclude adicionado para evitar autenticação do Spring Security.
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 
-
 public class EcoplusApplication {
 
 	public static void main(String[] args) {

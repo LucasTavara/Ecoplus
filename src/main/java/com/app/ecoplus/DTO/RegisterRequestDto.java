@@ -1,4 +1,14 @@
 package com.app.ecoplus.DTO;
 
-public record RegisterRequestDto(String nomeCompleto, String email, String senha,String cidade,String estado,String servicoOferecido,Integer documento) {
+import jakarta.persistence.GeneratedValue;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record RegisterRequestDto(
+		@NotNull String nomeCompleto
+		,@NotBlank String email
+		,@NotBlank String senha
+		,@NotBlank String cidade
+		,@NotBlank String servicoOferecido
+		,@NotNull Integer documento) {
 }

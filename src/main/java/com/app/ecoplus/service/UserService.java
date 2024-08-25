@@ -1,36 +1,47 @@
 package com.app.ecoplus.service;
 
 
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.app.ecoplus.DTO.UserDto;
 import com.app.ecoplus.entity.User;
+import com.app.ecoplus.mapper.UserMapper;
 import com.app.ecoplus.repository.UserRepository;
+import com.app.ecoplus.service.exception.UserNotFoundException;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
 
     private final UserRepository userRepository;
-
-    private UserService(UserRepository userRepository) {
-    	this.userRepository = userRepository;
-    }
+    private final UserMapper userMapper;
 
     //Criar
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDto createUser(UserDto userDto) {
+    	User user = userMapper.toUser(userDto);
+        User savedUser = userRepository.save(user);
+        return userMapper.toUserDto(savedUser);
     }
 
     //Atualizar
-    public User updateUser(Long id, User user) {
+    public UserDto updateUser(Long id, UserDto userDto) {
         if (userRepository.existsById(id)) {
-        	user.setId(id);
-            return userRepository.save(user);
+        	
+        	User updatedUser = userMapper.toUser(userDto);
+        	updatedUser.setId(id);
+        	User savedUser = userRepository.save(updatedUser);
+        	
+        	
+            return userMapper.toUserDto(savedUser);
         } else {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException("User not found");
         }
     }
 
@@ -39,34 +50,44 @@ public class UserService {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException("User not found");
         }
     }
     // Listar
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public List<UserDto> getAllUser() {
+        List<User> user = userRepository.findAll();
+        return user.stream().map(userMapper::toUserDto).toList();
     }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    
+    // Precisa de Condicional. -Ed
+    public Optional<UserDto> findById(Long id) {
+    	Optional<User> user = userRepository.findById(id); 
+    	UserDto userDto = userMapper.toUserDto(user.get());
+    	return Optional.of(userDto);
+    	
     }
-    public List<User> findByNomeCompleto(String nomeCompleto){
-    	return userRepository.findByNomeCompleto(nomeCompleto);
+    // Precisa de Condicional. -Ed
+    public List<UserDto> findByNomeCompleto(String nomeCompleto){
+    	List<User> user = userRepository.findByNomeCompleto(nomeCompleto);
+    	return user.stream().map(userMapper::toUserDto).toList();
     }
 
-    public List<User> findByServicoFornecido(String servicoFornecido){
-    	return userRepository.findByServicoOferecido(servicoFornecido);
+    public List<UserDto> findByServicoFornecido(String servicoFornecido){
+    	List<User> user = userRepository.findByServicoOferecido(servicoFornecido);
+    	return  user.stream().map(userMapper::toUserDto).toList();
     }
 
-    public Optional<User> idAndName(Long id, String nomeCompleto){
-    	   Optional<User> user = userRepository.findById(id);
+    public Optional<UserDto> idAndName(Long id, String nomeCompleto){
+	   	Optional<User>user = userRepository.findById(id);
 
-    	    if (user.isPresent() && user.get().getNomeCompleto().equals(nomeCompleto)) {
-    	        return user;
-    	    }
-    	    else {
-    	    	return Optional.empty();
-    	    }
+	    if (user.isPresent() && user.get().getNomeCompleto().equals(nomeCompleto)) {
+	    	UserDto userDto = userMapper.toUserDto(user.get());
+	        return Optional.of(userDto);
+	    }
+	    else {
+	    	return Optional.empty();
+	    }
 
     }
 }

@@ -5,10 +5,12 @@ import java.io.Serializable;
 
 import com.app.ecoplus.entity.Form;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class FormDto implements Serializable {
 
@@ -25,6 +27,8 @@ public class FormDto implements Serializable {
     public Form transformaParaObjeto(){
         return new Form(null, nomeCompleto, empresa, cidade, email, mensagem);
     }
+    
+    
     public FormDto(Form form) {
         this.id = form.getId();
         this.nomeCompleto = form.getNome();
@@ -33,15 +37,7 @@ public class FormDto implements Serializable {
         this.cidade = form.getCidade();
         this.mensagem = form.getMensagem();
     }
-	public FormDto(Long id, String nomeCompleto, String empresa, String email, String cidade, String mensagem) {
-		this.id = id;
-		this.nomeCompleto = nomeCompleto;
-		this.empresa = empresa;
-		this.email = email;
-		this.cidade = cidade;
-		this.mensagem = mensagem;
-	}
-	
+
 
 
 }

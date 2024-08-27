@@ -105,9 +105,10 @@ img{
            justify-content: space-evenly;
            align-items: center;
        }
+       
 
         #container .box-login {      /* Login *box */
-            width: 350px;
+            width: 750px;
             height: 550px;
             border-radius: 10px;
             background: #FDFDF4;
@@ -120,7 +121,7 @@ img{
         }
 
             .box-login .box {
-                width: 80%;
+                width: 90%;
                 height: 320px;
                 display: flex;
                 flex-direction: column;
@@ -144,7 +145,7 @@ img{
 
             .box-login .box-account {
                 width: 80%;
-                height: 360px;
+                height: 370px;
 
                 display: flex;
                 flex-direction: column;

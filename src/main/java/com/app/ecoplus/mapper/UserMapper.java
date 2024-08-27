@@ -1,8 +1,9 @@
 package com.app.ecoplus.mapper;
 
-import com.app.ecoplus.DTO.UserDto;
-import com.app.ecoplus.entity.User;
 import org.springframework.stereotype.Component;
+
+import com.app.ecoplus.dto.user.UserDto;
+import com.app.ecoplus.entity.user.User;
 
 @Component
 public class UserMapper {
@@ -14,12 +15,14 @@ public class UserMapper {
         }
         User user = new User();
         user.setId(userDto.getId());
-        user.setNomeCompleto(userDto.getNomeCompleto());
-        user.setSenha(userDto.getSenha());
+        user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setNomeCompleto(userDto.getNomeCompleto());
         user.setCidade(userDto.getCidade());
         user.setServicoOferecido(userDto.getServicoOferecido());
         user.setDocumento(userDto.getDocumento());
+        user.setRole(userDto.getRole());
         return user;
     }
 
@@ -30,12 +33,14 @@ public class UserMapper {
         }
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
-        userDto.setNomeCompleto(user.getNomeCompleto());
-        userDto.setSenha(user.getSenha());
+        userDto.setLogin(user.getLogin());
         userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        userDto.setNomeCompleto(user.getNomeCompleto());
         userDto.setCidade(user.getCidade());
         userDto.setServicoOferecido(user.getServicoOferecido());
         userDto.setDocumento(user.getDocumento());
+        userDto.setRole(user.getRole());
         return userDto;
     }
 }

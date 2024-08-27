@@ -1,4 +1,4 @@
-class UserSubmit {
+class UserSignIn {
     constructor(settings) {
         this.settings = settings;
         this.form = document.querySelector(settings.form);
@@ -64,13 +64,14 @@ class UserSubmit {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const userSubmit = new UserSubmit({
-        form: "#registerForm",
-        button: "button[type='submit']",
-        success: "<h1 class='success'>Usuário criado com sucesso!</h1>",
-        error: "<h1 class='error'>Não foi possível criar o usuário.</h1>",
-        redirectUrl: "/criarcontadois"
+    const userSignIn = new UserSignIn({
+        form: "#loginForm",
+        button: "button[type='submit']", 
+        success: "<h1 class='success'>Login realizado com sucesso!</h1>",
+        error: "<h1 class='error'>Erro ao realizar login.</h1>",
+        redirectUrl: "/"
     });
 
-    userSubmit.init();
+    userSignIn.init();
 });
+

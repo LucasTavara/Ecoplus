@@ -29,21 +29,21 @@
         <i class="bi bi-arrow-left-short"></i>
         <div class="box-login">
             <h1>Junte-se a nós,<br>Crie hoje a sua conta!</h1>
-            <form th:action="@{/user/register}" th:object="${registerRequestDto}" method="post">
+            <form th:action="@{/auth/register}" th:object="${userRegisterAuthDto}" method="post" id="registerForm">
                 <div class="box-account">
                     <h2>Informe seus dados</h2>
-                    <input type="text" id="username" th:field="*{nomeCompleto}" placeholder="Nome Completo">
+                    
+                    <input type="text" id="login" th:field="*{login}" placeholder="Login">
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
                     <input type="email" id="email" th:field="*{email}" placeholder="Email">
+                    <input type="text" id="username" th:field="*{nomeCompleto}" placeholder="Nome Completo">
                     <input type="text" id="cidade" th:field="*{cidade}" placeholder="Cidade">
                     <input list="plataformas" th:field="*{servicoOferecido}" placeholder="Serviços Oferecidos">
+                    <input list="plataformas" th:field="*{documento}" placeholder="Documento">
                     <datalist id="plataformas">
                         <option value="Usuário">
                         <option value="Fornecedor">
                     </datalist>
-                    <input type="number" id="documento" th:field="*{documento}" placeholder="CPF ou CNPJ">
-                    <input type="password" id="password" th:field="*{senha}" placeholder="Senha" required>
-                    <input type="password" id="repeatPassword" placeholder="Repita Senha" required>
-                    
                     <div class="check">
                         <input type="checkbox" name="termo" id="termo" style="width: 13px; height: 13px;">
                         <label for="termo" style="color: #3d3d3d;">Li e aceito os termos</label>

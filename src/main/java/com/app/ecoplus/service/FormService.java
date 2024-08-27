@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.app.ecoplus.DTO.FormDto;
+import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.repository.FormRepository;
 

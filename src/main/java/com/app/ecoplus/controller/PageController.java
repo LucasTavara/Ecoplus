@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.app.ecoplus.DTO.FormDto;
-import com.app.ecoplus.DTO.RegisterRequestDto;
+import com.app.ecoplus.dto.FormDto;
+import com.app.ecoplus.dto.user.UserAuthDto;
+import com.app.ecoplus.dto.user.UserDto;
+import com.app.ecoplus.dto.user.UserRegisterAuthDto;
 import com.app.ecoplus.service.ImageService;
 
 
@@ -32,9 +34,10 @@ public class PageController {
 		return "index";
 	}
 
-	@GetMapping("/loginconta")
+	@GetMapping("/login")
 	public String login(Model model) {
 		Map <String, String>imageMap = imageService.imagesLogin();
+		model.addAttribute("userAuthDto", new UserAuthDto("",""));
 		model.addAllAttributes(imageMap);
 		return "login";
 	}
@@ -62,9 +65,10 @@ public class PageController {
 		return "form";
 	}
 
-	@GetMapping("/criarconta")
-	public String criarconta(Model model) {
-	    model.addAttribute("registerRequestDto", new RegisterRequestDto("","","","","",1));
+	@GetMapping("/register")
+	public String register(Model model, UserDto userDto) {
+		UserRegisterAuthDto userRegisterAuthDto = new UserRegisterAuthDto("","","","","","","", userDto.getRole());
+		model.addAttribute("userRegisterAuthDto", userRegisterAuthDto);
 		return "criarconta";
 	}
 

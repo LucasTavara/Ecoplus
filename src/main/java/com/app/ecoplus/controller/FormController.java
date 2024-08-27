@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.ecoplus.DTO.FormDto;
+import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.service.FormService;
 import com.app.ecoplus.service.exception.ObjectNotFoundException;

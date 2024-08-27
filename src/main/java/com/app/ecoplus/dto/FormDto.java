@@ -1,4 +1,4 @@
-package com.app.ecoplus.DTO;
+package com.app.ecoplus.dto;
 
 
 import java.io.Serializable;

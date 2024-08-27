@@ -20,9 +20,12 @@
 </head>
 <body>
 
-<div id="fundo-login">   <!-- banner fundo criar conta -->
+
+<div id="fundo-login"><!-- banner fundo criar conta -->
+
     <div>
     </div>
+
 
     <div id="container">
         <div class="banner"></div>
@@ -40,7 +43,7 @@
                         <option value="Usuário">
                         <option value="Fornecedor">
                     </datalist>
-                    <input type="number" id="documento" th:field="*{documento}" placeholder="CPF ou CNPJ">
+                    <input type="text" id="documento" th:field="*{documento}" placeholder="CPF ou CNPJ">
                     <input type="password" id="password" th:field="*{senha}" placeholder="Senha" required>
                     <input type="password" id="repeatPassword" placeholder="Repita Senha" required>
                     

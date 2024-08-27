@@ -69,8 +69,10 @@ public class PageController {
 	}
 
 	@GetMapping("/criarcontadois")
-	public String criarcontadois() {
-		return "criarcontadois";
+	public String criarcontadois(Model model) {
+		Map <String, String>imageMap = imageService.imagesIndex();
+		model.addAllAttributes(imageMap);
+		return "cirarcontadois";
 	}
 	@GetMapping("/chat")
 	public String chat() {

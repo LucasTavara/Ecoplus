@@ -33,10 +33,13 @@ public class SecurityConfiguration {
 								"/password",
 								"/form",
 								"/register", 
-								"/criarcontadois", 
-								"/chat", 
+								"/index" ,
+								"/chat",
+								"/loginconta",
 								"/sobrenos")
-						.permitAll().requestMatchers("/css/**", "/js/**", "/img/**").permitAll().anyRequest()
+						.permitAll()
+						.requestMatchers(HttpMethod.POST, "/form-api/submitForm").permitAll()
+						.requestMatchers("/css/**", "/js/**", "/img/**","/video/**").permitAll().anyRequest()
 						.authenticated())
 				.build();
 

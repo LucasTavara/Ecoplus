@@ -1,7 +1,10 @@
 package com.app.ecoplus.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import com.app.ecoplus.entity.Form;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,6 +68,7 @@ public class PageController {
 		return "form";
 	}
 
+
 	@GetMapping("/register")
 	public String register(Model model, UserDto userDto) {
 		UserRegisterAuthDto userRegisterAuthDto = new UserRegisterAuthDto("","","","","","","", userDto.getRole());
@@ -72,12 +76,7 @@ public class PageController {
 		return "criarconta";
 	}
 
-	@GetMapping("/criarcontadois")
-	public String criarcontadois(Model model) {
-		Map <String, String>imageMap = imageService.imagesIndex();
-		model.addAllAttributes(imageMap);
-		return "criarcontadois";
-	}
+
 	@GetMapping("/chat")
 	public String chat() {
 		return "Preencher este local";

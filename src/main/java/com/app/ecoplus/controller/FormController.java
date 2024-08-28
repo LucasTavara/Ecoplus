@@ -2,6 +2,7 @@ package com.app.ecoplus.controller;
 
 import java.util.List;
 
+import com.app.ecoplus.service.ImageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -28,8 +29,9 @@ public class FormController {
 
     private final FormService formService;
 
-    public FormController(FormService formService) {
-    	this.formService = formService;
+    public FormController( FormService formService) {
+
+        this.formService = formService;
     }
     
     //Criado
@@ -44,8 +46,11 @@ public class FormController {
     public String submitForm(@ModelAttribute("formDto") FormDto formDto, Model model) {
         // Processar o input
         formService.create(formDto.transformaParaObjeto());
-        return "redirect:/"; // nome do template que exibirá o resultado
+        return "";
+        // nome do template que exibirá o resultado
 	}
+
+
 
     // Busca
     @GetMapping("/")

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar conta 1/2</title>
+    <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
+    <title>Criar conta</title>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -42,7 +44,7 @@
                     <input type="text" id="username" th:field="*{nomeCompleto}" placeholder="Nome Completo">
                     <input type="text" id="cidade" th:field="*{cidade}" placeholder="Cidade">
                     <input list="plataformas" th:field="*{servicoOferecido}" placeholder="Serviços Oferecidos">
-                    <input list="plataformas" th:field="*{documento}" placeholder="Documento">
+                    <input type="text" th:field="*{documento}" placeholder="Documento">
                     <datalist id="plataformas">
                         <option value="Usuário">
                         <option value="Fornecedor">

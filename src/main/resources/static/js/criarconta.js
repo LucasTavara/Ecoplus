@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button: "button[type='submit']",
         success: "<h1 class='success'>Usuário criado com sucesso!</h1>",
         error: "<h1 class='error'>Não foi possível criar o usuário.</h1>",
-        redirectUrl: "/criarcontadois"
+        redirectUrl: "/"
     });
 
     userSubmit.init();

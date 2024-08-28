@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Formulário</title>
     <link rel="stylesheet" th:href="@{/css/form.css}"/>
+    <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
     <script defer th:src="@{/js/form.js}"></script>
 </head>
 <body>
 <form
-        th:action="@{/submitForm}" th:object="${formDto}" method="post">
+        th:action="@{/form-api/submitForm}" th:object="${formDto}" method="post">
 
     <label for="nomeCompleto">Nome Completo</label>
     <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />

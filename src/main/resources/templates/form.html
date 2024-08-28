@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Formulário</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}"/>
+    <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
+    <script defer th:src="@{/js/form.js}"></script>
+</head>
+<body>
+<form
+        th:action="@{/form-api/submitForm}" th:object="${formDto}" method="post">
+
+    <label for="nomeCompleto">Nome Completo</label>
+    <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />
+    
+    <label for="empresa">Empresa</label>
+    <input type="text" name="empresa" id="empresa" th:field="*{empresa}" required />
+    
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email" th:field="*{email}" required />
+    
+    <label for="cidade">Cidade</label>
+    <input type="text" name="cidade" id="cidade" th:field="*{cidade}" required />
+    
+    <label for="mensagem">Mensagem</label>
+    <textarea name="mensagem" id="mensagem" th:field="*{mensagem}" required></textarea>
+    
+    <button type="submit" data-button>Enviar</button>
+</form>
+</body>
+</html>

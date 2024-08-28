@@ -68,7 +68,7 @@
 section.faq-hoteis{
     height: 100px;
 
-    background-image: url(/fundo/fundo3.jpg);   /* banner sustentavel */
+    background-image: url(../fundo/fundo3.jpg);   /* banner sustentavel */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

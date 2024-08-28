@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS Users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY ,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    nomeCompleto VARCHAR(255),
+    cidade VARCHAR(255),
+    servicoOferecido VARCHAR(255),
+    documento VARCHAR(255) UNIQUE,
+    role VARCHAR(255)
+)DEFAULT CHARSET=UTF8;

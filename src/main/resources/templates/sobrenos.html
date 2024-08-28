@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/responsive.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/sobrenos.css}">
     <link rel="stylesheet" th:href="@{/css/card.css}">
+    <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
 
     <!-- Cdnjs -->
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css}" th:integrity="@{sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==}" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -59,7 +60,7 @@
 
         <!--Botão  de Contato *Entrar > Login -->
         <section class="btn-contato">
-            <a href="@{/login}">
+            <a th:href="@{/login}">
                 <button>Entrar</button>
             </a>
         </section>
@@ -102,7 +103,8 @@
     <h1 class="title">Sobre Nós</h1>
     <div class="about-content">
         <div class="image">
-            <img src="" alt="Imagem do Grupo">
+            <video src="/video/EcoPlusVideo.mp4" width="620" height="380" controls preload="none">
+            </video>
         </div>
         <div class="content">
             <p>A EcoPlus surgiu como alternativa de uma plataforma onde faz conexão entre produtores de resíduos orgânicaos diretamente com produtores de Biogás. <br>O projeto foi desenvolvido a partir da ODS 7 | Energia Acessecível e Limpa. ODS 11 | Cidadaes e Comunidades Sustentáveis. <br>Projeto Desenvolvido na Turma Start 2024.2 | Java </p>
@@ -144,12 +146,7 @@
             <a href="#" class="btn"><i class="bi bi-linkedin"></i></a>
         </div>
 
-        <div class="box">
-            <img th:src="${LucasAntonioImg}" alt="Antônio">
-            <h3>Lucas Antônio</h3>
-            <p>Desenvolvedor | Test</p>
-            <a href="https://www.linkedin.com/in/lucas-ant%C3%B4nio-3815b5248/" class="btn"><i class="bi bi-linkedin"></i></a>
-        </div>
+
 
     </div>
 </div>

@@ -65,7 +65,7 @@ header .logo img.logo-preto{
 }
 
 header.rolar{
-    background-image: url('/static/img/Banner.jpeg');
+    background-image: url(../img/Banner.jpeg);
     padding: 3px 0;  /* Tamanho da Barra de navegação */
 
     box-shadow: 0 0 30px #1b3619;  /* sombra da barra */
@@ -220,7 +220,7 @@ body.no-overflow{
 
 section.hero-site{
     height: 100vh;
-    background-image: url(/img/Banner.jpeg);            /* Imagem principal de cima */
+    background-image: url(../img/Banner.jpeg);            /* Imagem principal de cima */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -366,7 +366,7 @@ section.Contato{
 section.hoteis{
     height: 600px;
 
-    background-image: url(/img/sustentavel.jpg);   /* banner sustentavel */
+    background-image: url(../img/sustentavel.jpg);   /* banner sustentavel */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

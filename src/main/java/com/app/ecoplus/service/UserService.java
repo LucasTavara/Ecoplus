@@ -1,82 +1,85 @@
 package com.app.ecoplus.service;
 
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.app.ecoplus.entity.User;
+import com.app.ecoplus.dto.user.UserDto;
+import com.app.ecoplus.entity.user.User;
+import com.app.ecoplus.mapper.UserMapper;
 import com.app.ecoplus.repository.UserRepository;
+import com.app.ecoplus.service.exception.UserNotFoundException;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
-public class UserService {
+@RequiredArgsConstructor
+public class UserService implements UserDetailsService {
 
-	
+
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    
+    
+    
 
-    private UserService(UserRepository userRepository) {
-    	this.userRepository = userRepository;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByLogin(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        UserDto userDto = userMapper.toUserDto(user);
+        return new org.springframework.security.core.userdetails.User(userDto.getLogin(), userDto.getPassword(), new ArrayList<>());
     }
     
-    public User createUser(User user) {
-        return userRepository.save(user);
+    //Criar
+    public UserDto createUser(UserDto userDto) {
+    	User user = userMapper.toUser(userDto);
+        User savedUser = userRepository.save(user);
+        return userMapper.toUserDto(savedUser);
     }
 
- 
-    public User updateUser(Long id, User user) {
+    //Atualizar
+    public UserDto updateUser(Long id, UserDto userDto) {
         if (userRepository.existsById(id)) {
-        	user.setId(id);
-            return userRepository.save(user);
+        	User updatedUser = userMapper.toUser(userDto);
+        	updatedUser.setId(id);
+        	User savedUser = userRepository.save(updatedUser);
+            return userMapper.toUserDto(savedUser);
         } else {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException("User not found");
         }
     }
 
+    //Deletar
     public void deleteUser(Long id) {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException("User not found");
         }
     }
-
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    // Listar
+    public List<UserDto> findAll() {
+        List<User> user = userRepository.findAll();
+        return user.stream().map(userMapper::toUserDto).toList();
     }
     
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
-    public List<User> findByNomeCompleto(String nomeCompleto){
-    	return userRepository.findByNomeCompleto(nomeCompleto);
-    }
-    
-    public Optional<User> getEmail(String email){
-    	return userRepository.findByEmail(email);
-    }
-
-    public List<User> getCidade(String cidade){
-    	return userRepository.findByCidade(cidade);
-    }
-    
-    public List<User> getDocumento(String documento){
-    	return userRepository.findByDocumento(documento);
-    }
-    
-    public List<User> findByServicoFornecido(String servicoFornecido){
-    	return userRepository.findByServicoOferecido(servicoFornecido);
-    }
-    
-    public Optional<User> idAndName(Long id, String nomeCompleto){
-    	   Optional<User> user = userRepository.findById(id);
-    	    
-    	    if (user.isPresent() && user.get().getNomeCompleto().equals(nomeCompleto)) {
-    	        return user;
-    	    }
-    	    else {
-    	    	return Optional.empty();
-    	    }
-    
-    }
+    public Optional<UserDto> findById(Long id){
+    	Optional<User> user = userRepository.findById(id);
+    	if(user.isEmpty()) {
+        	return Optional.empty();
+    	}
+    	User transformUser = user.get();
+		return Optional.of(userMapper.toUserDto(transformUser));
+     }
+  
 }

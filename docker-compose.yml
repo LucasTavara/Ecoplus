@@ -1,0 +1,77 @@
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: ecoplus
+    ports:
+      - "5432:5432"
+    networks:
+      - default
+    volumes:
+      - postgres_ecoplus_data:/db/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ecoplus@admin.com
+      PGADMIN_DEFAULT_PASSWORD: ecoplus
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    deploy:
+     resources:
+       limits:
+         memory: 512M
+       reservations:
+         memory: 256M
+
+
+  flyway:
+     image: flyway/flyway:latest
+     container_name: flyway_migrations
+     depends_on:
+       - postgres
+     environment:
+       - FLYWAY_URL=jdbc:postgresql://postgres:5432/ecoplus
+       - FLYWAY_USER=root
+       - FLYWAY_PASSWORD=root
+     volumes:
+       - ./resources/db/migrations:/flyway/sql
+     entrypoint: ["flyway", "migrate"]
+     deploy:
+       resources:
+          limits:
+            memory: 512M
+          reservations:
+            memory: 256M
+  app:
+    build: .
+    container_name: ecoplus_app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecoplus
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+
+volumes:
+  postgres_ecoplus_data:

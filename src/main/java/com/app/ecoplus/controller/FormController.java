@@ -40,13 +40,13 @@ public class FormController {
         Form form = formService.create(formDto.transformaParaObjeto());
         return new ResponseEntity<>(form, HttpStatus.CREATED);
     }
-    
-	
-    @PostMapping("/submitForm")
+
+
+    @PostMapping("/FormSubmit")
     public String submitForm(@ModelAttribute("formDto") FormDto formDto, Model model) {
         // Processar o input
         formService.create(formDto.transformaParaObjeto());
-        return "";
+        return "form";
         // nome do template que exibirá o resultado
 	}
 

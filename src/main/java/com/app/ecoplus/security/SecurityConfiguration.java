@@ -19,6 +19,7 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity.csrf(csrf -> csrf.disable())
+				// altorização de acesso a cada metodo da requisição Rest.
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
@@ -36,9 +37,9 @@ public class SecurityConfiguration {
 								"/index" ,
 								"/chat",
 								"/loginconta",
-								"/sobrenos")
+								"/sobrenos","FormSubmit")
 						.permitAll()
-						.requestMatchers(HttpMethod.POST, "/form-api/submitForm").permitAll()
+						.requestMatchers(HttpMethod.POST, "/form-api/FormSubmit").permitAll()
 						.requestMatchers("/css/**", "/js/**", "/img/**","/video/**").permitAll().anyRequest()
 						.authenticated())
 				.build();

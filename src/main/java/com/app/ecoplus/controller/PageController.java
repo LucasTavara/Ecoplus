@@ -67,6 +67,13 @@ public class PageController {
 		model.addAllAttributes(imageMap);
 		return "form";
 	}
+	@GetMapping("/FormSubmit")
+	public String formSubmit(Model model) {
+		Map <String, String>imageMap = imageService.imagesForm();
+		model.addAttribute("formDto", new FormDto());
+		model.addAllAttributes(imageMap);
+		return "form";
+	}
 
 
 	@GetMapping("/register")

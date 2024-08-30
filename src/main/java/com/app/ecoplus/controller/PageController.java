@@ -75,7 +75,6 @@ public class PageController {
 		return "form";
 	}
 
-
 	@GetMapping("/register")
 	public String register(Model model, UserDto userDto) {
 		UserRegisterAuthDto userRegisterAuthDto = new UserRegisterAuthDto("","","","","","","", userDto.getRole());

@@ -11,8 +11,8 @@
     <script defer th:src="@{/js/form.js}"></script>
 </head>
 <body>
-<form
-        th:action="@{/form-api/FormSubmit}" th:object="${formDto}" method="post">
+
+<form th:action="@{/submit/form}" th:object="${formDto}" method="post">
 
     <label for="nomeCompleto">Nome Completo</label>
     <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />
@@ -30,7 +30,7 @@
     <textarea name="mensagem" id="mensagem" th:field="*{mensagem}" required></textarea>
 
 
-    <button type="submit" data-button>Enviar</button>
+    <button type="submit" class="buttom-form" data-button>Enviar</button>
 
 
     <a th:href="@{/}">

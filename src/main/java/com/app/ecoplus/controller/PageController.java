@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.app.ecoplus.entity.Form;
+import com.app.ecoplus.service.FormService;
+import com.app.ecoplus.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import com.app.ecoplus.dto.user.UserAuthDto;
 import com.app.ecoplus.dto.user.UserDto;
 import com.app.ecoplus.dto.user.UserRegisterAuthDto;
 import com.app.ecoplus.service.ImageService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -25,10 +29,11 @@ public class PageController {
 //	Classe focada na renderização de páginas e gestão dos templates.
 	
 	private final ImageService imageService;
-
-	private PageController(ImageService imageService) {
+	private final FormService formService;
+	private PageController(ImageService imageService, FormService formService) {
 		this.imageService = imageService;
-	}
+        this.formService = formService;
+    }
 
 	@GetMapping("/")
 	public String index(Model model) {
@@ -67,13 +72,6 @@ public class PageController {
 		model.addAllAttributes(imageMap);
 		return "form";
 	}
-	@GetMapping("/FormSubmit")
-	public String formSubmit(Model model) {
-		Map <String, String>imageMap = imageService.imagesForm();
-		model.addAttribute("formDto", new FormDto());
-		model.addAllAttributes(imageMap);
-		return "form";
-	}
 
 	@GetMapping("/register")
 	public String register(Model model, UserDto userDto) {
@@ -82,6 +80,13 @@ public class PageController {
 		return "criarconta";
 	}
 
+
+	@PostMapping("/submit/form")
+	public String formSubmit( Model model, FormDto formDto) {
+		formService.create(formDto.transformaParaObjeto());
+		model.addAttribute("formDto", formDto);
+		return "form";
+	}
 
 	@GetMapping("/chat")
 	public String chat() {

@@ -37,12 +37,15 @@ public class SecurityConfiguration {
 								"/index" ,
 								"/chat",
 								"/loginconta",
-								"/sobrenos","FormSubmit")
+								"/sobrenos",
+								"/form-api/form",
+								"/form-api/**",
+								"/submit/form")
 						.permitAll()
-						.requestMatchers(HttpMethod.POST, "/form-api/FormSubmit").permitAll()
+						.requestMatchers(HttpMethod.POST, "/submit/form").permitAll()
 						.requestMatchers("/css/**", "/js/**", "/img/**","/video/**").permitAll().anyRequest()
 						.authenticated())
-				.build();
+				        .build();
 
 	}
 

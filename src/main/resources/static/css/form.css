@@ -85,6 +85,13 @@ button:disabled {
   cursor: not-allowed;
   background: #ffffff;
 }
+.buttom-form{
+  background-color: white;
+  margin-top: 17px;
+  color: black;
+  width: 100px;
+
+}
 
 .success,
 .error {
@@ -111,3 +118,4 @@ button:disabled {
   justify-content: center;
   align-items: center;
 }
+

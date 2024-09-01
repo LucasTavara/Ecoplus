@@ -1,7 +1,7 @@
 package com.app.ecoplus.controller.user;
 
 import com.app.ecoplus.dto.user.UserDto;
-import com.app.ecoplus.service.UserService;
+import com.app.ecoplus.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

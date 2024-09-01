@@ -1,4 +1,4 @@
-package com.app.ecoplus.service;
+package com.app.ecoplus.service.order;
 
 import com.app.ecoplus.dto.Order.OrderDto;
 import com.app.ecoplus.entity.Order.Order;

@@ -1,7 +1,7 @@
 package com.app.ecoplus.controller.order;
 
 import com.app.ecoplus.dto.Order.OrderDto;
-import com.app.ecoplus.service.OrderService;
+import com.app.ecoplus.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

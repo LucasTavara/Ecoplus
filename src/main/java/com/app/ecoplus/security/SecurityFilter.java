@@ -1,7 +1,7 @@
 package com.app.ecoplus.security;
 
 import com.app.ecoplus.dto.user.UserDto;
-import com.app.ecoplus.service.UserService;
+import com.app.ecoplus.service.user.UserService;
 import com.app.ecoplus.service.exception.ObjectNotFoundException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

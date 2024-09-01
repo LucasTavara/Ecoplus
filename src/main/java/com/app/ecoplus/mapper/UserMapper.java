@@ -15,12 +15,12 @@ public class UserMapper {
         }
         User user = new User();
         user.setId(userDto.getId());
-        user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setNomeCompleto(userDto.getNomeCompleto());
-        user.setCidade(userDto.getCidade());
-        user.setServicoOferecido(userDto.getServicoOferecido());
+        user.setPhone(userDto.getPhone());
+        user.setAge(userDto.getAge());
+        user.setEndereco(userDto.getEndereco());
         user.setDocumento(userDto.getDocumento());
         user.setRole(userDto.getRole());
         return user;
@@ -33,12 +33,12 @@ public class UserMapper {
         }
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
-        userDto.setLogin(user.getLogin());
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
         userDto.setNomeCompleto(user.getNomeCompleto());
-        userDto.setCidade(user.getCidade());
-        userDto.setServicoOferecido(user.getServicoOferecido());
+        userDto.setPhone(user.getPhone());
+        userDto.setAge(user.getAge());
+        userDto.setEndereco(user.getEndereco());
         userDto.setDocumento(user.getDocumento());
         userDto.setRole(user.getRole());
         return userDto;

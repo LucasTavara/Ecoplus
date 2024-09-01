@@ -1,21 +1,13 @@
 package com.app.ecoplus.controller.user;
 
+import com.app.ecoplus.dto.user.UserDto;
+import com.app.ecoplus.service.user.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.app.ecoplus.dto.user.UserDto;
-import com.app.ecoplus.service.UserService;
-
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("users")
@@ -35,10 +27,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable Long id) {
     	Optional<UserDto> userDto = userService.findById(id);
-    	if(userDto.isEmpty()) {
-    		return ResponseEntity.notFound().build();
-    	}
-    	return ResponseEntity.ok(userDto.get());
+        return userDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Update

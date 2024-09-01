@@ -1,13 +1,12 @@
 package com.app.ecoplus.dto.user;
 
-import java.io.Serializable;
-
 import com.app.ecoplus.entity.user.User;
 import com.app.ecoplus.entity.user.UserRole;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
@@ -16,16 +15,15 @@ public class UserDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	
-    private String login;
-    private String email;
-    private String password;
-    
-    private String nomeCompleto;
-    private String cidade;
-    private String servicoOferecido;
-    private String documento;
-    private UserRole role;
+	private String email;
+	private String password;
+	private String nomeCompleto;
+	private String phone;
+	private String age;
+	private String endereco;
+	private String documento;
+	//	UserType
+	private UserRole role;
     
     
 	/*
@@ -43,28 +41,16 @@ public class UserDto implements Serializable{
 	 * 
 	 * ~Ed
 	 */
-    
-    public UserDto(User user) {
-        this.login = user.getLogin();
-        this.password = user.getPassword();
-        this.email = user.getEmail();
-        this.nomeCompleto = user.getNomeCompleto();
-        this.cidade = user.getCidade();
-        this.servicoOferecido = user.getServicoOferecido();
-        this.documento = user.getDocumento();
-        this.role = user.getRole();
-    }
-    
-	public UserDto(String login, String password, String email, String nomeCompleto, String cidade, String servicoOferecido,
-			 String documento, UserRole role) {
-		this.login = login;
-		this.password = password;
-		this.email = email;
-		this.nomeCompleto = nomeCompleto;
-		this.cidade = cidade;
-		this.servicoOferecido = servicoOferecido;
-		this.documento = documento;
-		this.role = role;
+
+	public UserDto(User user) {
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.nomeCompleto = user.getNomeCompleto();
+		this.phone = user.getPhone();
+		this.age = user.getAge();
+		this.endereco = user.getEndereco();
+		this.documento = user.getDocumento();
+		this.role = user.getRole();
 	}
 }
 

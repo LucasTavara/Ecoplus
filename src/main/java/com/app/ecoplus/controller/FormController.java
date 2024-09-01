@@ -1,6 +1,7 @@
 package com.app.ecoplus.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.app.ecoplus.service.ImageService;
 import org.springframework.http.HttpStatus;
@@ -28,10 +29,12 @@ public class FormController {
 
 
     private final FormService formService;
+    private final ImageService imageService;
 
-    public FormController( FormService formService) {
+    public FormController(FormService formService, ImageService imageService) {
 
         this.formService = formService;
+        this.imageService = imageService;
     }
     
     //Criado
@@ -40,16 +43,6 @@ public class FormController {
         Form form = formService.create(formDto.transformaParaObjeto());
         return new ResponseEntity<>(form, HttpStatus.CREATED);
     }
-    
-	
-    @PostMapping("/submitForm")
-    public String submitForm(@ModelAttribute("formDto") FormDto formDto, Model model) {
-        // Processar o input
-        formService.create(formDto.transformaParaObjeto());
-        return "";
-        // nome do template que exibirá o resultado
-	}
-
 
 
     // Busca

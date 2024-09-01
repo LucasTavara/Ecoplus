@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 5px;
+    padding: 0px;
 
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -84,7 +84,7 @@ img{
 
     #container {         /* responsivo */
         width: 350px;
-        height: 550px;
+        height: 570px;
         border-radius: 10px;
         -webkit-box-shadow: 0px 0px 6px -1px #000000;
         box-shadow: 0px 0px 6px -1px #000000;
@@ -95,8 +95,9 @@ img{
     }
 
        #container .banner { /* Login box */
-           width: 600px;
-           height: 550px;
+           margin-left: -6px;
+           width: 650px;
+           height: 570px;
            border-top-left-radius: 10px;
            border-bottom-left-radius: 10px;
            background-image: url(../img/Banner.jpeg);  /* banner logo*/
@@ -108,6 +109,8 @@ img{
        
 
         #container .box-login {      /* Login *box */
+            margin-top: 5px;
+            margin-left: -3px ;
             width: 750px;
             height: 550px;
             border-radius: 10px;
@@ -144,7 +147,7 @@ img{
                     }
 
             .box-login .box-account {
-                width: 80%;
+                width: 90%;
                 height: 370px;
 
                 display: flex;

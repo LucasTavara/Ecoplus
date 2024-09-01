@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Formulário</title>
+
     <link rel="stylesheet" th:href="@{/css/form.css}"/>
     <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
     <script defer th:src="@{/js/form.js}"></script>
 </head>
 <body>
-<form
-        th:action="@{/form-api/submitForm}" th:object="${formDto}" method="post">
+
+<form th:action="@{/submit/form}" th:object="${formDto}" method="post">
 
     <label for="nomeCompleto">Nome Completo</label>
     <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />
@@ -27,8 +28,18 @@
     
     <label for="mensagem">Mensagem</label>
     <textarea name="mensagem" id="mensagem" th:field="*{mensagem}" required></textarea>
-    
-    <button type="submit" data-button>Enviar</button>
+
+
+    <button type="submit" class="buttom-form" data-button>Enviar</button>
+
+
+    <a th:href="@{/}">
+        <div id="bubble">
+            <img th:src="${LogoCinza}" alt="icone-usuário" title="fazer-login" eight="40px" width="40px">
+        </div>
+    </a>
+
+
 </form>
 </body>
 </html>

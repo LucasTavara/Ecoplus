@@ -1,5 +1,6 @@
 package com.app.ecoplus.dto.user;
 
+import com.app.ecoplus.entity.Order.Order;
 import com.app.ecoplus.entity.user.User;
 import com.app.ecoplus.entity.user.UserRole;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,6 +26,8 @@ public class UserDto implements Serializable{
 	private String documento;
 	//	UserType
 	private UserRole role;
+    //Order
+	private List<Order> order;
     
     
 	/*

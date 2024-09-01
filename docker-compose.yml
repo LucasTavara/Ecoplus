@@ -36,25 +36,6 @@ services:
        reservations:
          memory: 256M
 
-
-  flyway:
-     image: flyway/flyway:latest
-     container_name: flyway_migrations
-     depends_on:
-       - postgres
-     environment:
-       - FLYWAY_URL=jdbc:postgresql://postgres:5432/ecoplus
-       - FLYWAY_USER=root
-       - FLYWAY_PASSWORD=root
-     volumes:
-       - ./resources/db/migrations:/flyway/sql
-     entrypoint: ["flyway", "migrate"]
-     deploy:
-       resources:
-          limits:
-            memory: 512M
-          reservations:
-            memory: 256M
   app:
     build: .
     container_name: ecoplus_app

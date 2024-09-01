@@ -38,13 +38,13 @@
                 <div class="box-account">
                     <h2>Informe seus dados</h2>
                     
-                    <input type="text" id="login" th:field="*{login}" placeholder="Login">
-                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
                     <input type="email" id="email" th:field="*{email}" placeholder="Email">
-                    <input type="text" id="username" th:field="*{nomeCompleto}" placeholder="Nome Completo">
-                    <input type="text" id="cidade" th:field="*{cidade}" placeholder="Cidade">
-                    <input list="plataformas" th:field="*{servicoOferecido}" placeholder="Serviços Oferecidos">
-                    <input type="text" th:field="*{documento}" placeholder="Documento">
+                    <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+                    <input type="text" id="nomeCompleto" th:field="*{nomeCompleto}" placeholder="Nome Completo">
+                    <input type="number" id="phone" th:field="*{phone}" placeholder="Phone">
+                    <input type="text" id="age" th:field="*{age}" placeholder="Idade">
+                    <input type="text" id="endereco" th:field="*{endereco}" placeholder="Endereço">
+                    <input type="text" id="documento" th:field="*{documento}" placeholder="Documento">
                     <datalist id="plataformas">
                         <option value="Usuário">
                         <option value="Fornecedor">
@@ -87,5 +87,8 @@
                 $('body').append(div);
             });
         </script>
+    </div>
+</div>
 </body>
+
 </html>

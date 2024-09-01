@@ -23,6 +23,7 @@ public class SecurityConfiguration {
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+						.requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "orders/create").permitAll()
 						.requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
 						.requestMatchers(HttpMethod.GET, "/auth/**").permitAll()
@@ -45,8 +46,11 @@ public class SecurityConfiguration {
 								"/submit/form")
 						.permitAll()
 						.requestMatchers(HttpMethod.POST, "/submit/form").permitAll()
+						.requestMatchers(HttpMethod.POST, "/orders/create").permitAll()
+						.requestMatchers(HttpMethod.PUT, "/orders/update").permitAll()
+						.requestMatchers(HttpMethod.GET, "byuser/**").permitAll()
 						.requestMatchers("/css/**", "/js/**", "/img/**","/video/**").permitAll().anyRequest()
-						.authenticated())
+						.permitAll())
 				        .build();
 
 	}

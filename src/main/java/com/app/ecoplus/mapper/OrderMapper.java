@@ -2,12 +2,13 @@ package com.app.ecoplus.mapper;
 
 import com.app.ecoplus.dto.Order.OrderDto;
 import com.app.ecoplus.entity.Order.Order;
+import com.app.ecoplus.entity.user.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper {
 
-    public Order toOrder(OrderDto orderDto){
+    public Order toOrder(OrderDto orderDto) {
         if(orderDto == null){
             return null;
         }
@@ -15,6 +16,7 @@ public class OrderMapper {
         order.setTitle(orderDto.getTitle());
         order.setDescription(orderDto.getDescription());
         order.setStatus(orderDto.getStatus());
+        order.setUserRef(orderDto.getUserRef());
         return order;
     }
 

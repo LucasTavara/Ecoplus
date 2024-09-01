@@ -49,7 +49,7 @@ public class User implements UserDetails {
 	@Column(name="UserType")
 	private UserType type;
 
-	@OneToMany(mappedBy = "user_id")
+	@OneToMany(mappedBy = "userRef", fetch = FetchType.LAZY)
 	private List<Order> order;
 
 	//	Admin e User.

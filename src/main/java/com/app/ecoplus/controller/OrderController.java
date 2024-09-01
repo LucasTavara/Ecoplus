@@ -28,6 +28,11 @@ public class OrderController {
         OrderDto createdOrder = orderService.createOrder(orderDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
+
+    @GetMapping("byuser/{id}")
+    public ResponseEntity<List<?>> findByUser(@PathVariable Long id){
+        return ResponseEntity.ok(this.orderService.findAllOrdersByUser(id));
+    }
 //    Update
     @PutMapping("/update/{id}")
     public ResponseEntity<OrderDto> updateOrder(@PathVariable Long id, @RequestBody OrderDto orderDto){

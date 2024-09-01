@@ -1,6 +1,7 @@
 package com.app.ecoplus.entity.Order;
 
 
+import com.app.ecoplus.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +27,8 @@ public class Order {
     @Column(name = "status", nullable = false)
     private Status Status;
 
-    @Column(name = "user_id")
-    private Long user;
 
+    @JoinColumn(name = "userRef",nullable = true)
+    private Long userRef;
 
 }

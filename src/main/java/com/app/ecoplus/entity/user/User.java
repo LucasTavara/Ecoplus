@@ -1,5 +1,6 @@
 package com.app.ecoplus.entity.user;
 
+import com.app.ecoplus.entity.Order.Order;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -45,8 +46,14 @@ public class User implements UserDetails {
 	@Column(name = "Documento", unique = true)
 	private String documento;
 
-	//	UserType
-	@Column(name = "Role")
+	@Column(name="UserType")
+	private UserType type;
+
+	@OneToMany(mappedBy = "user_id")
+	private List<Order> order;
+
+	//	Admin e User.
+	@Column(name = "Roles")
 	private UserRole role;
 
 	public User(String email, String password, String nomeCompleto, String phone, String age, String endereco, String documento, UserRole role) {
@@ -59,6 +66,8 @@ public class User implements UserDetails {
 		this.documento = documento;
 		this.role = role;
 	}
+
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

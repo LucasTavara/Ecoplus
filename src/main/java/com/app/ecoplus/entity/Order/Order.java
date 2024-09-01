@@ -1,9 +1,10 @@
 package com.app.ecoplus.entity.Order;
 
 
-
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -25,8 +26,8 @@ public class Order {
     @Column(name = "status", nullable = false)
     private Status Status;
 
+    @Column(name = "user_id")
+    private Long user;
 
-    @Column(name = "provaider_id")
-    private Long provaider_id;
 
 }

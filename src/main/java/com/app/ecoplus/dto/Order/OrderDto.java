@@ -28,11 +28,8 @@ public class OrderDto  implements Serializable {
 
 
     public OrderDto(Order order) {
-        this.id = order.getId();
         this.title = order.getTitle();
         this.description = order.getDescription();
         this.status = order.getStatus();
-        this.provaider_id = order.getProvaider_id();
-
     }
 }

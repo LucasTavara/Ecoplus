@@ -1,23 +1,20 @@
 package com.app.ecoplus.service;
 
 
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import com.app.ecoplus.dto.user.UserDto;
+import com.app.ecoplus.entity.user.User;
+import com.app.ecoplus.mapper.UserMapper;
+import com.app.ecoplus.repository.UserRepository;
+import com.app.ecoplus.service.exception.ObjectNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.app.ecoplus.dto.user.UserDto;
-import com.app.ecoplus.entity.user.User;
-import com.app.ecoplus.mapper.UserMapper;
-import com.app.ecoplus.repository.UserRepository;
-import com.app.ecoplus.service.exception.UserNotFoundException;
-
-import lombok.RequiredArgsConstructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,12 +29,12 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(username);
-        if (user == null) {
+        Optional<User> user = userRepository.findByEmail(username);
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        UserDto userDto = userMapper.toUserDto(user);
-        return new org.springframework.security.core.userdetails.User(userDto.getLogin(), userDto.getPassword(), new ArrayList<>());
+        UserDto userDto = userMapper.toUserDto(user.get());
+        return new org.springframework.security.core.userdetails.User(userDto.getEmail(), userDto.getPassword(), new ArrayList<>());
     }
     
     //Criar
@@ -49,23 +46,39 @@ public class UserService implements UserDetailsService {
 
     //Atualizar
     public UserDto updateUser(Long id, UserDto userDto) {
-        if (userRepository.existsById(id)) {
-        	User updatedUser = userMapper.toUser(userDto);
-        	updatedUser.setId(id);
-        	User savedUser = userRepository.save(updatedUser);
-            return userMapper.toUserDto(savedUser);
-        } else {
-            throw new UserNotFoundException("User not found");
+        Optional<User> existingUser = userRepository.findById(id);
+        if(existingUser.isEmpty()){
+            throw new ObjectNotFoundException("Order not found");
         }
+        User user = existingUser.get();
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setNomeCompleto(userDto.getNomeCompleto());
+        user.setPhone(userDto.getPhone());
+        user.setAge(userDto.getAge());
+        user.setEndereco(userDto.getEndereco());
+        user.setDocumento(userDto.getDocumento());
+        user.setRole(userDto.getRole());
+
+        User updatedUser = userRepository.save(user);
+        return userMapper.toUserDto(updatedUser);
     }
 
     //Deletar
     public void deleteUser(Long id) {
-        if (userRepository.existsById(id)) {
+        try{
             userRepository.deleteById(id);
-        } else {
-            throw new UserNotFoundException("User not found");
+        }catch(Exception e){
+            throw new ObjectNotFoundException("Teste");
         }
+
+
+//        Optional<User> user = userRepository.findById(id);
+//        if (user.isEmpty()) {
+//            userRepository.deleteById(id);
+//        } else {
+//            throw new ObjectNotFoundException("User not found");
+//        }
     }
     // Listar
     public List<UserDto> findAll() {
@@ -81,5 +94,11 @@ public class UserService implements UserDetailsService {
     	User transformUser = user.get();
 		return Optional.of(userMapper.toUserDto(transformUser));
      }
-  
+
+//    Refinar depois.
+    public Optional<UserDto> findByEmail(String email){
+        Optional <User> user = userRepository.findByEmail(email);
+        return user.map(userMapper::toUserDto);
+    }
+
 }

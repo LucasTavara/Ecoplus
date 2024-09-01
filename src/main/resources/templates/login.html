@@ -19,7 +19,7 @@
 
     <!--JS & jQuery-->
     <script type="text/javascript" th:src="@{/js/login.js}" defer></script>
-    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}" th:integrity="@{sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=}" th:crossorigin="@{anonymous}"></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
         <div class="box">
             <form th:action="@{/auth/login}" th:object="${userAuthDto}" method="post" id="loginForm">
                 <h2>Faça o Seu Login!</h2>
-                <input type="text" th:field="*{login}" id="username" placeholder="Username" required>
+                <input type="text" th:field="*{email}" id="username" placeholder="Username" required>
                 <input type="password" th:field="*{password}" id="password" placeholder="Password" required>
                 <a th:href="@{/password}">
                     <p>Esqueceu a sua senha?</p>

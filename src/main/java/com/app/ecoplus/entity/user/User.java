@@ -1,16 +1,15 @@
 package com.app.ecoplus.entity.user;
 
-import java.util.Collection;
-import java.util.List;
-
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")
@@ -25,39 +24,38 @@ public class User implements UserDetails {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
-	@Column(name = "login", nullable = false, unique = true)
-	private String login;
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
 
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@Column(name = "email", nullable = false, unique = true)
-	private String email;
-
-	@Column(name = "nomeCompleto")
+	@Column(name = "NomeCompleto")
 	private String nomeCompleto;
 
-	@Column(name = "cidade")
-	private String cidade;
+	@Column(name = "Phone")
+	private String phone;
 
-	@Column(name = "servicoOferecido")
-	private String servicoOferecido;
+	@Column(name = "Age")
+	private String age;
 
-	@Column(name = "documento", unique = true)
+	@Column(name = "Endereço")
+	private String endereco;
+
+	@Column(name = "Documento", unique = true)
 	private String documento;
 
-
-	@Column(name = "role")
+	//	UserType
+	@Column(name = "Role")
 	private UserRole role;
 
-	public User(String login, String password, String email, String nomeCompleto, String cidade, String servicoOferecido,
-			 String documento, UserRole role) {
-		this.login = login;
-		this.password = password;
+	public User(String email, String password, String nomeCompleto, String phone, String age, String endereco, String documento, UserRole role) {
 		this.email = email;
+		this.password = password;
 		this.nomeCompleto = nomeCompleto;
-		this.cidade = cidade;
-		this.servicoOferecido = servicoOferecido;
+		this.phone = phone;
+		this.age = age;
+		this.endereco = endereco;
 		this.documento = documento;
 		this.role = role;
 	}
@@ -72,6 +70,6 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return login;
+		return email;
 	}
 }

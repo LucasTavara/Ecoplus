@@ -1,20 +1,18 @@
 package com.app.ecoplus.security;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-import com.app.ecoplus.entity.user.User;
+import com.app.ecoplus.dto.user.UserDto;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @Service
 @AllArgsConstructor
@@ -25,7 +23,7 @@ public class TokenService {
 private String secret;
 
 
-public String generateToken(User user) {
+public String generateToken(UserDto userDto) {
 
     try {
 
@@ -33,7 +31,7 @@ public String generateToken(User user) {
 
         return JWT.create()
                 .withIssuer("Ecoplus")
-                .withSubject(user.getEmail())
+                .withSubject(userDto.getEmail())
                 .withExpiresAt(this.generateExpirationDate())
                 .sign(algorithm);
 
@@ -55,6 +53,7 @@ public String validateToken(String token) {
         return null;
     }
 }
+
 
 private Instant generateExpirationDate() {
     return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));

@@ -29,7 +29,7 @@ public class UserAuthController {
 	@PostMapping(value= "/login")
 	public ResponseEntity<String> login(@RequestBody @Valid UserAuthDto userAuthDto) {
 	    try {
-	        var usernamePassword = new UsernamePasswordAuthenticationToken(userAuthDto.login(), userAuthDto.password());
+	        var usernamePassword = new UsernamePasswordAuthenticationToken(userAuthDto.email(), userAuthDto.password());
 	        authenticationManager.authenticate(usernamePassword);
 	        return ResponseEntity.ok().build();
 	    } catch (AuthenticationException e) {
@@ -37,19 +37,19 @@ public class UserAuthController {
 	    }
 	}
 	
-	@PostMapping(value="/register", consumes={"application/json"})
+	@PostMapping(value="/register")
 	public ResponseEntity<?> register(@RequestBody @Valid UserRegisterAuthDto registerDto) {
-        if(this.userRepository.findByLogin(registerDto.login()) != null) {
+        if(this.userRepository.findByEmail(registerDto.email()).isPresent()) {
         	return ResponseEntity.badRequest().build();
         }
 		String encryptedPassword = new BCryptPasswordEncoder().encode(registerDto.password());
 		User newUser = new User(
-				registerDto.login(),
-				encryptedPassword,
 				registerDto.email(),
+				encryptedPassword,
 				registerDto.nomeCompleto(),
-				registerDto.cidade(),
-				registerDto.servicoOferecido(),
+				registerDto.phone(),
+				registerDto.age(),
+				registerDto.endereco(),
 				registerDto.documento(),
 				registerDto.role());
 		this.userRepository.save(newUser);

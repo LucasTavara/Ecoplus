@@ -1,12 +1,11 @@
 package com.app.ecoplus.repository;
 
 
-import java.util.Optional;
-
+import com.app.ecoplus.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.ecoplus.entity.user.User;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -15,9 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Optional <User> findById(Long id);
 
 	Optional<User> findByEmail(String email);
-	
-	User findByLogin(String login);
-	
 	
     
 }

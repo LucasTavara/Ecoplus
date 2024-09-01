@@ -31,7 +31,7 @@
     <div class="box-login">
         <div class="box">
             <form th:action="@{/auth/login}" th:object="${userAuthDto}" method="post" id="loginForm">
-                <h2>Faça o Seu Login!</h2>
+                <h2>Faça o seu Login!</h2>
                 <input type="text" th:field="*{login}" id="username" placeholder="Username" required>
                 <input type="password" th:field="*{password}" id="password" placeholder="Password" required>
                 <a th:href="@{/password}">

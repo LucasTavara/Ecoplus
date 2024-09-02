@@ -16,5 +16,6 @@ Este software visa conectar produtores de resíduos orgânicos, como agricultore
 - [**PostgreSQL**](https://www.postgresql.org/download/) : Banco de dados relacional utilizado para armazenar as informações do sistema.
 - [**Docker**](https://www.docker.com) : Ferramenta de containerização para garantir a consistência do ambiente de desenvolvimento e produção.
 - [**Thymeleaf**](https://www.thymeleaf.org) : Motor de template para renderização de páginas HTML no lado do servidor.
+- [**Swagger**](https://swagger.io/) : Conjunto de ferramentas para documentar, visualizar e testar APIs RESTful de forma interativa e padronizada.
 ##
 - [Documentação/Documentation](Documentacao.md)

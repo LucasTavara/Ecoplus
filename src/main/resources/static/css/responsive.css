@@ -1,175 +1,170 @@
-  /* Barra de navegação *quebra */
-  @media screen and (max-width: 900px){
-      header .menu-desktop, header .btn-contato{
-          display: none;        /* Menu invisivel quando quebra */
-      }
+/* Barra de navegação *quebra */
+@media screen and (max-width: 900px){
+    header .menu-desktop, header .btn-contato{
+        display: none;        /* Menu invisivel quando quebra */
+    }
 
-      header .btn-menu-mob{
-          display: block;       /* Menu mobile invisivel */
-      }
+    header .btn-menu-mob{
+        display: block;       /* Menu mobile invisivel */
+    }
 
-      header .logo img{              /* Logo  */
-          width:40px;
-          height: 40px;
+    header .logo img{              /* Logo  */
+        width:40px;
+        height: 40px;
 
-      }
+    }
 
-  }
+}
 
-  @media screen and (max-width: 878px){
-       hero-site .txt-hero h1{  /* Responsivo hero */
-          font-size: 2.6em;
-          line-height: 45px;
-      }
+@media screen and (max-width: 878px){
+    hero-site .txt-hero h1{  /* Responsivo hero */
+        font-size: 2.6em;
+        line-height: 45px;
+    }
 
-      .hero-site .txt-hero p{
-          font-size: 14px;
-      }
+    .hero-site .txt-hero p{
+        font-size: 14px;
+    }
 
-      .hero-site .txt-hero p span{
-          display: inline;
-      }
+    .hero-site .txt-hero p span{
+        display: inline;
+    }
 
-      .hero-site button{
-          font-size: 18px;
-      }
+    .hero-site button{
+        font-size: 18px;
+    }
 
-      /* Estilo do Zig-zag */
-      .vantagens .itens-container{
-      flex-direction: column;
-     }
+    /* Estilo do Zig-zag */
+    .vantagens .itens-container{
+        flex-direction: column;
+    }
 
-     .vantagens .itens-container .img-itens img{
-      width: 100%;
-     }
+    .vantagens .itens-container .img-itens img{
+        width: 100%;
+    }
 
-     .vantagens .itens-container .txt-itens p{
-      margin-bottom: 20px;
-     }
+    .vantagens .itens-container .txt-itens p{
+        margin-bottom: 20px;
+    }
 
-     .vantagens .itens-container .item-1{
-      order: 1;
-     }
+    .vantagens .itens-container .item-1{
+        order: 1;
+    }
 
-     .vantagens .itens-container .item-2{
-      order: 0;
-     }
+    .vantagens .itens-container .item-2{
+        order: 0;
+    }
 
-     /* Responsivo dos Contatos/quipe */
-      .txt-contato, .icons-contato{
-          display: block;
-          width: 100%;
-      }
+    /* Responsivo dos Contatos/quipe */
+    .txt-contato, .icons-contato{
+        display: block;
+        width: 100%;
+    }
 
-      .Contato .txt-contato h3{
-          font-size: 2em;
-          line-height: 40px;
-          text-align: center;
+    .Contato .txt-contato h3{
+        font-size: 2em;
+        line-height: 40px;
+        text-align: center;
 
-      }
+    }
 
-      .Contato .txt-contato p{
-          margin-bottom: 20px;
-          font-size: 16px;
-          text-align: center;
-      }
+    .Contato .txt-contato p{
+        margin-bottom: 20px;
+        font-size: 16px;
+        text-align: center;
+    }
 
-      .Contato .icons-contato button{
-          width: 80%;
-      }
+    .Contato .icons-contato button{
+        width: 80%;
+    }
 
-      /* Responsivo mundo sustentavel */
-      .hoteis h3{
-          font-size: 2.3em;
-          line-height: 40px;
-          font-weight: 150;
-      }
+    /* Responsivo mundo sustentavel */
+    .hoteis h3{
+        font-size: 2.3em;
+        line-height: 40px;
+        font-weight: 150;
+    }
 
-      .hoteis p{
-          margin: 20px 0;
-          font-size: 16px;
-          font-weight: 300;
-      }
+    .hoteis p{
+        margin: 20px 0;
+        font-size: 16px;
+        font-weight: 300;
+    }
 
-      /* Responsivo como funciona */
-      .txt-funciona, .instrucoes{
-          display: block;
-          width: 100%;
-          text-align: center;
-      }
+    /* Responsivo como funciona */
+    .txt-funciona, .instrucoes{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
 
-      .como-funciona .txt-funciona{
-          position: static;
-          text-align: center;
-      }
+    .como-funciona .txt-funciona{
+        position: static;
+        text-align: center;
+    }
 
-      .como-funciona .txt-funciona h3{
-          font-size: 3em;
-          line-height: 50px;
-          text-align: center;
-      }
-
-
-      .instrucoes .instru-box{
-          display: flex;
-          align-items: center;
-          gap: 20px;
-
-          flex-direction: column;
-      }
-
-      .instrucoes .instru-box img{
-          max-width: 120px;
-      }     /* icom */
-
-      .instrucoes .instru-box h4 span{
-          font-weight: 400;
-      }
-
-      .instrucoes .instru-box p{
-          font-size: 20px;
-          line-height: 20px;
-          text-align: center;
-
-      }
-
-      /* Responsivo do rodapé */
-      footer .top-footer button{
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          border: 2px solid white;
-          background-color: transparent;
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
-          margin: 0 10px;
-          transition: 0.5s;
-      }
-
-      footer .top-footer button:hover{
-          background-color: white;
-          color: black;
-      }             /* Cor e estilo */
-
-      footer .middle-footer a{
-          color: white;
-          margin: 15px 0;
-
-          display: block;
-      }
-
-      footer .bottom-footer p{
-          color: white;
-          margin-top: 10px;
-          font-size: 15px;
-
-          /* sobre nós */
-
-  }
-  }
+    .como-funciona .txt-funciona h3{
+        font-size: 3em;
+        line-height: 50px;
+        text-align: center;
+    }
 
 
+    .instrucoes .instru-box{
+        display: flex;
+        align-items: center;
+        gap: 20px;
 
+        flex-direction: column;
+    }
 
+    .instrucoes .instru-box img{
+        max-width: 120px;
+    }     /* icom */
 
+    .instrucoes .instru-box h4 span{
+        font-weight: 400;
+    }
+
+    .instrucoes .instru-box p{
+        font-size: 20px;
+        line-height: 20px;
+        text-align: center;
+
+    }
+
+    /* Responsivo do rodapé */
+    footer .top-footer button{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background-color: transparent;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 10px;
+        transition: 0.5s;
+    }
+
+    footer .top-footer button:hover{
+        background-color: white;
+        color: black;
+    }             /* Cor e estilo */
+
+    footer .middle-footer a{
+        color: white;
+        margin: 15px 0;
+
+        display: block;
+    }
+
+    footer .bottom-footer p{
+        color: white;
+        margin-top: 10px;
+        font-size: 15px;
+
+        /* sobre nós */
+
+    }
+}

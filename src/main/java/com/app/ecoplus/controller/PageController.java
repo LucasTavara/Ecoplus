@@ -2,6 +2,7 @@ package com.app.ecoplus.controller;
 
 import java.util.Map;
 
+import com.app.ecoplus.dto.Order.OrderDto;
 import com.app.ecoplus.service.FormService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,9 +84,23 @@ public class PageController {
 		return "form";
 	}
 
+	@GetMapping("/vendas")
+	public String venda(Model model) {
+		Map <String, String>imageMap = imageService.imagesVendas();
+		model.addAllAttributes(imageMap);
+		return "vendas";
+	}
+
+	@GetMapping("/infor")
+	public String inform(Model model, OrderDto orderDto) {
+		Map <String, String>imageMap = imageService.imagesInfo();
+		model.addAllAttributes(imageMap);
+		return "infor";
+	}
+
 	@GetMapping("/chat")
 	public String chat() {
-		return "Preencher este local";
+		return "vendas.html";
 	}
 
 	@GetMapping("/sobrenos")

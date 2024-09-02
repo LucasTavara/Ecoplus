@@ -43,7 +43,9 @@ public class SecurityConfiguration {
 								"/sobrenos",
 								"/form-api/form",
 								"/form-api/**",
-								"/submit/form")
+								"/submit/form",
+								"/infor",
+								"/vendas")
 						.permitAll()
 						.requestMatchers(HttpMethod.POST, "/submit/form").permitAll()
 						.requestMatchers(HttpMethod.POST, "/orders/create").permitAll()

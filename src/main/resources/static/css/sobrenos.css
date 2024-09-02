@@ -22,7 +22,7 @@
     flex: 1;
     margin-right: 20px;
     overflow: hidden;
-   
+
 
     }
 
@@ -46,6 +46,7 @@
 }
 
 /* adicionado! */
+
 .comprar{
     margin-top: 20px;
     display: inline-block;
@@ -63,7 +64,7 @@
 background-color: #022601;
 }
 
-/* responsive */
+/* responsive*/
 @media (max-width: 768px){
     .about-content{
         flex-direction: column;
@@ -80,7 +81,8 @@ background-color: #022601;
     }
 
 }
-/* adicionado! */
+
+/* adicionado!*/
 
 /* Alunos */
 

@@ -9,7 +9,7 @@ import com.app.ecoplus.entity.user.User;
 public class UserMapper {
 
     // UserDto para User
-    public User toUser(UserDto userDto) {
+    public User toUser(User userDto) {
         if (userDto == null) {
             return null;
         }

@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService {
     }
     
     //Criar
-    public UserDto createUser(UserDto userDto) {
+    public UserDto createUser(User userDto) {
     	User user = userMapper.toUser(userDto);
         User savedUser = userRepository.save(user);
         return userMapper.toUserDto(savedUser);

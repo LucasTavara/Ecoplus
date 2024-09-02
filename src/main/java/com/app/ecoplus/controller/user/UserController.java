@@ -13,8 +13,7 @@ import java.util.Optional;
 @RequestMapping("users")
 @RequiredArgsConstructor
 public class UserController {
-
-	private final UserService userService;
+private final UserService userService;
 
     // Busca
     @GetMapping("/")

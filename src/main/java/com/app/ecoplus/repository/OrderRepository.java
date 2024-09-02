@@ -1,7 +1,7 @@
 package com.app.ecoplus.repository;
 
 import com.app.ecoplus.entity.Order.Order;
-import com.app.ecoplus.entity.user.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

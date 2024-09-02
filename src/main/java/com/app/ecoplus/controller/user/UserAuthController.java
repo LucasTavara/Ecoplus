@@ -1,5 +1,6 @@
 package com.app.ecoplus.controller.user;
 
+import com.app.ecoplus.service.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +26,7 @@ public class UserAuthController {
 
 	private final AuthenticationManager authenticationManager;
 	private final UserRepository userRepository;
+	private final UserService userService;
 	
 	@PostMapping(value= "/login")
 	public ResponseEntity<String> login(@RequestBody @Valid UserAuthDto userAuthDto) {
@@ -39,7 +41,7 @@ public class UserAuthController {
 	
 	@PostMapping(value="/register")
 	public ResponseEntity<?> register(@RequestBody @Valid UserRegisterAuthDto registerDto) {
-        if(this.userRepository.findByEmail(registerDto.email()).isPresent()) {
+        if(this.userService.findByEmail(registerDto.email()).isPresent()) {
         	return ResponseEntity.badRequest().build();
         }
 		String encryptedPassword = new BCryptPasswordEncoder().encode(registerDto.password());
@@ -52,7 +54,7 @@ public class UserAuthController {
 				registerDto.endereco(),
 				registerDto.documento(),
 				registerDto.role());
-		this.userRepository.save(newUser);
+		this.userService.createUser(newUser);
 		return ResponseEntity.ok().build();
 	}
 }

@@ -9,7 +9,7 @@ public class EcoplusApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcoplusApplication.class, args);
-		System.out.println("Teste");
+		System.out.println("PRONTO");
 	}
 
 }

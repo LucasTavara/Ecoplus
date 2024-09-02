@@ -45,6 +45,43 @@
     line-height: 1.6;
 }
 
+/* adicionado! */
+.comprar{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #396d37;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight:bold ;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.comprar:hover{
+background-color: #022601;
+}
+
+/* responsive */
+@media (max-width: 768px){
+    .about-content{
+        flex-direction: column;
+    }
+
+    .image, .content{
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .title{
+        font-size: 30px;
+        margin-bottom:50px ;
+    }
+
+}
+/* adicionado! */
+
 /* Alunos */
 
 .ccontainer{

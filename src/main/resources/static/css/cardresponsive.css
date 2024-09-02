@@ -1,7 +1,7 @@
 /* card responsivo */
 @media (max-width: 768px) {
     body {
-        height: 80%;
+        height: 90%;
         display: flex;
         justify-content: center;
       flex-direction: column;
@@ -10,9 +10,8 @@
     }
 
     .card {
-      width: 60%;
-      height: 30%;
-      height: auto;
+      width: 70%;
+      height: 40%;
       padding: 10px;
     }
 
@@ -23,17 +22,17 @@
 
     .card h1 {
       font-size: 1rem;
-      padding: 5px;
+      padding: 4px;
     }
 
     .card h2 {
       font-size: 0.8rem;
-      padding: 5px;
+      padding: 3px;
     }
 
     .card button {
-        width: 150px;
-        padding: 5px;
+        width: 130px;
+        padding: 3px;
       font-size: 0.9rem;
 
     }

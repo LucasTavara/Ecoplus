@@ -86,4 +86,32 @@ public class ImageService {
 			return imageMap;
 
 	}
+	public Map<String, String> imagesVendas(){
+		Map <String, String> imageMap = new HashMap<>();
+
+		//		Logo
+		imageMap.put("LogoCinza","/img/logo/LogoCinza.png");
+		imageMap.put("LogoPreta","/img/logo/LogoPreta.png");
+
+
+		imageMap.put("residuos","/img/residuos.jpg");
+		return imageMap;
+
+	}
+
+
+	public Map<String, String> imagesInfo(){
+		Map <String, String> imageMap = new HashMap<>();
+
+		//		Logo
+		imageMap.put("LogoCinza","/img/logo/LogoCinza.png");
+		imageMap.put("LogoPreta","/img/logo/LogoPreta.png");
+
+		imageMap.put("resi1","static/img/card/card/resi1.jpg");
+		imageMap.put("resi2","static/img/card/card/resi2.jpg");
+		imageMap.put("resi3","static/img/card/card/resi3.jpg");
+		imageMap.put("resi4","static/img/card/card/resi4.jpg");
+		return imageMap;
+
+	}
 }

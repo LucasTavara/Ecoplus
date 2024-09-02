@@ -1,0 +1,53 @@
+/* card responsivo */
+@media (max-width: 768px) {
+    body {
+        height: 80%;
+        display: flex;
+        justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px;
+    }
+
+    .card {
+      width: 60%;
+      height: 30%;
+      height: auto;
+      padding: 10px;
+    }
+
+    .card img {
+      height: auto;
+
+    }
+
+    .card h1 {
+      font-size: 1rem;
+      padding: 5px;
+    }
+
+    .card h2 {
+      font-size: 0.8rem;
+      padding: 5px;
+    }
+
+    .card button {
+        width: 150px;
+        padding: 5px;
+      font-size: 0.9rem;
+
+    }
+  }
+
+  #bubble {     /* alterar */
+    cursor: pointer;
+    position: absolute;
+    width: 40px;
+    height: 70px;
+    right: 90%;
+    bottom: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

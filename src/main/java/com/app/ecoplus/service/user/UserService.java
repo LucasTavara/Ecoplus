@@ -1,4 +1,4 @@
-package com.app.ecoplus.service;
+package com.app.ecoplus.service.user;
 
 
 import com.app.ecoplus.dto.user.UserDto;

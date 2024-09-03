@@ -1,18 +1,16 @@
 package com.app.ecoplus.controller;
 
-import java.util.Map;
-
-import com.app.ecoplus.service.FormService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.dto.user.UserAuthDto;
 import com.app.ecoplus.dto.user.UserDto;
 import com.app.ecoplus.dto.user.UserRegisterAuthDto;
+import com.app.ecoplus.service.FormService;
 import com.app.ecoplus.service.ImageService;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Map;
 
 
 @Controller
@@ -73,14 +71,6 @@ public class PageController {
 		UserRegisterAuthDto userRegisterAuthDto = new UserRegisterAuthDto("","","","","","","", userDto.getRole());
 		model.addAttribute("userRegisterAuthDto", userRegisterAuthDto);
 		return "criarconta";
-	}
-
-
-	@PostMapping("/submit/form")
-	public String formSubmit( Model model, FormDto formDto) {
-		formService.create(formDto.transformaParaObjeto());
-		model.addAttribute("formDto", formDto);
-		return "form";
 	}
 
 	@GetMapping("/chat")

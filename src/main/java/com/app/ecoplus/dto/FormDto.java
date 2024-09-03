@@ -2,6 +2,8 @@ package com.app.ecoplus.dto;
 
 
 import com.app.ecoplus.entity.Form;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +18,21 @@ public class FormDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+
+    @Valid
+    @NotNull(message = "put name")
     private String nomeCompleto;
+
+    @NotNull(message = "put name enterprise")
     private String empresa;
+
+    @NotNull(message = "put email")
     private String email;
+
+    @NotNull(message = "put city")
     private String cidade;
+
+    @NotNull(message = "put message")
     private String mensagem;
     
 

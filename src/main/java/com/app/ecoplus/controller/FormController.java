@@ -4,12 +4,17 @@ import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.service.FormService;
 import com.app.ecoplus.service.exception.ObjectNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -22,7 +27,7 @@ public class FormController {
 
     //Criado
     @PostMapping
-    public ResponseEntity<FormDto> createForm(@RequestBody FormDto formDto) {
+    public ResponseEntity<FormDto> createForm(@RequestBody @Valid FormDto formDto) {
         return ResponseEntity.ok(formService.create(formDto));
     }
 
@@ -63,5 +68,17 @@ public class FormController {
         }
     }
 
+    //Tratariva de erro BAD_REQUEST na requisição
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach(error -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
 
 }

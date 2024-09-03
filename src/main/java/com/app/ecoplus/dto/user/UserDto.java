@@ -3,6 +3,8 @@ package com.app.ecoplus.dto.user;
 import com.app.ecoplus.entity.Order.Order;
 import com.app.ecoplus.entity.user.User;
 import com.app.ecoplus.entity.user.UserRole;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,12 +19,27 @@ public class UserDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
+
+	@Valid
+	@NotNull(message = "put email")
 	private String email;
+
+	@NotNull(message = "put password")
 	private String password;
+
+	@NotNull(message = "put name")
 	private String nomeCompleto;
+
+	@NotNull(message = "put phone")
 	private String phone;
+
+	@NotNull(message = "put age")
 	private String age;
+
+	@NotNull(message = "put address")
 	private String endereco;
+
+	@NotNull(message = "Put document")
 	private String documento;
 	//	UserType
 	private UserRole role;

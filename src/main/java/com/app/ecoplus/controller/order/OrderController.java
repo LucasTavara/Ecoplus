@@ -2,12 +2,17 @@ package com.app.ecoplus.controller.order;
 
 import com.app.ecoplus.dto.Order.OrderDto;
 import com.app.ecoplus.service.order.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -24,7 +29,7 @@ public class OrderController {
     }
 //    Create
     @PostMapping("/create")
-    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto){
+    public ResponseEntity<OrderDto> createOrder(@RequestBody @Valid OrderDto orderDto){
         OrderDto createdOrder = orderService.createOrder(orderDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
@@ -56,10 +61,19 @@ public class OrderController {
         }
     }
 
-//        Optional<OrderDto> existingOrderDto = orderService.findById(id);
-//        if(existingOrderDto.isEmpty()){
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//        return ResponseEntity.ok(orderService.deleteOrder(id));
-//    }
+    //Tratariva de erro BAD_REQUEST na requisição
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        ex.getBindingResult().getAllErrors().forEach(error -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+
+
 }

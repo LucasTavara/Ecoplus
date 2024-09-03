@@ -1,9 +1,9 @@
 package com.app.ecoplus.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.springframework.stereotype.Service;
 
 
 @Service
@@ -22,8 +22,8 @@ public class ImageService {
 		imageMap.put("Imagem4", "/img/imagem 4.jpg");
 		imageMap.put("Cadastro", "/img/cadastro.jpg");
 		imageMap.put("Residuos", "/img/residuos.jpg");
-		imageMap.put("Conexão", "/img/conexão.jpg");
-		imageMap.put("Negociação", "/img/negociação.jpg");
+		imageMap.put("Conexao", "/img/conexao.jpg");
+		imageMap.put("Negociacao", "/img/negociacao.jpg");
 	    return imageMap;
 	}
 

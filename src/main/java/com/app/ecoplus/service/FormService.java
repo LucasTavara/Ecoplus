@@ -1,72 +1,61 @@
 package com.app.ecoplus.service;
 
 
-import java.util.List;
-
-import org.hibernate.ObjectNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
 import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.repository.FormRepository;
+import com.app.ecoplus.service.exception.ObjectNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 
 
 @Service
+@RequiredArgsConstructor
 public class FormService{
 
 	
     private final FormRepository formRepository;
     
-    public FormService(FormRepository formRepository) {
-    	this.formRepository = formRepository;
-    }
-    
-
     //Uma lista do tipo User que retorna todos os usuários
     public List<Form> findAll() {
-    	return formRepository.findAll();}
+    	return formRepository.findAll();
+    }
 
 
     //Busca por Id a Conexão estabelecida
     public Form findById(Long id) {
         return formRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Conexao not found with id: " + id, id));
+                .orElseThrow(() -> new ObjectNotFoundException("Conexao not found with id: " + id));
     }
 
-    // Criação um novo usuário com todas as informações necessárias e salvar o mesmo no banco de dados
-    public Form create(Form form) {
-    	return formRepository.save(form);}
+    public FormDto create(FormDto formDto) {
+        try{
+            Form form = formRepository.save(formDto.toForm(formDto));
+            return formDto.toFormDto(form);
+        }catch(Exception e){
+            throw new ObjectNotFoundException("Object found exception");
+        }
+    }
 
     //Update
-    public ResponseEntity<?> updateForm(Long id, FormDto formDto) {
-        var formEntityOptional = formRepository.findById(id);
-        var form = formEntityOptional.get();
-
-
-        if (!formEntityOptional.isEmpty()) {
-            if (formDto.getNomeCompleto() != null) {
-                form.setNome(formDto.getNomeCompleto());
-            }
-            else if (formDto.getEmail() != null) {
-                form.setEmail(formDto.getEmail());
-            }
-            else if (formDto.getCidade() != null) {
-                form.setCidade(formDto.getCidade());
-            }
-            else if (formDto.getEmpresa() != null) {
-                form.setEmpresa(formDto.getEmpresa());
-            }
-            else if (formDto.getMensagem() != null) {
-                form.setMensagem(formDto.getMensagem());
-            }
-            formRepository.save(form);
-            return ResponseEntity.ok("Conexão atualizada com sucesso");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Conexão não encontrada");
+    public void updateForm(Long id, FormDto formDto) {
+        Optional<Form> formOptional = formRepository.findById(id);
+        if (formOptional.isEmpty()){
+            throw new ObjectNotFoundException("Form not exist.");
         }
+        Form form = formOptional.get();
+        form.setNomeCompleto(formDto.getNomeCompleto());
+        form.setEmpresa(formDto.getEmpresa());
+        form.setCidade(formDto.getCidade());
+        form.setEmail(formDto.getEmail());
+        form.setMensagem(formDto.getMensagem());
+
+        Form updatedForm = formRepository.save(form);
+        formDto.toFormDto(updatedForm);
     }
 
     //Delete
@@ -77,5 +66,4 @@ public class FormService{
               throw new RuntimeException("Form not found");
           }
     }
-
 }

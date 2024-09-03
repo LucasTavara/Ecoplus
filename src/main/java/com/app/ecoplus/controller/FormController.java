@@ -1,47 +1,29 @@
 package com.app.ecoplus.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import com.app.ecoplus.service.ImageService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.service.FormService;
 import com.app.ecoplus.service.exception.ObjectNotFoundException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/form-api")
+@RequiredArgsConstructor
 public class FormController {
 
 
     private final FormService formService;
-    private final ImageService imageService;
 
-    public FormController(FormService formService, ImageService imageService) {
-
-        this.formService = formService;
-        this.imageService = imageService;
-    }
-    
     //Criado
     @PostMapping
-    public ResponseEntity<Form> createForm(@RequestBody FormDto formDto) {
-        Form form = formService.create(formDto.transformaParaObjeto());
-        return new ResponseEntity<>(form, HttpStatus.CREATED);
+    public ResponseEntity<FormDto> createForm(@RequestBody FormDto formDto) {
+        return ResponseEntity.ok(formService.create(formDto));
     }
 
 
@@ -62,8 +44,12 @@ public class FormController {
     //Update
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateForm(@PathVariable Long id, @RequestBody FormDto formDto) {
-        formService.updateForm(id, formDto);
-        return ResponseEntity.noContent().build();
+        try{
+            formService.updateForm(id, formDto);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }catch (Exception e){
+            throw new ObjectNotFoundException("Teste");
+        }
     }
 
     // Deletar
@@ -71,7 +57,7 @@ public class FormController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
             formService.delete(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok().build();
         } catch (ObjectNotFoundException e) {
             return ResponseEntity.notFound().build();
         }

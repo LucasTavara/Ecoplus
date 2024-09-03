@@ -1,9 +1,11 @@
 package com.app.ecoplus.controller.user;
 
+import com.app.ecoplus.dto.ResponseDto;
 import com.app.ecoplus.dto.user.UserAuthDto;
 import com.app.ecoplus.dto.user.UserDto;
 import com.app.ecoplus.dto.user.UserRegisterAuthDto;
 import com.app.ecoplus.mapper.UserMapper;
+import com.app.ecoplus.security.TokenService;
 import com.app.ecoplus.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,18 +24,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserAuthController {
 
+	private final TokenService tokenService;
 	private final AuthenticationManager authenticationManager;
 	private final UserService userService;
 	private final UserMapper userMapper;
 	
 	@PostMapping(value= "/login")
-	public ResponseEntity<String> login(@RequestBody @Valid UserAuthDto userAuthDto) {
+	public ResponseEntity<ResponseDto> login(@RequestBody @Valid UserAuthDto userAuthDto) {
 	    try {
 	        var usernamePassword = new UsernamePasswordAuthenticationToken(userAuthDto.email(), userAuthDto.password());
-	        authenticationManager.authenticate(usernamePassword);
-	        return ResponseEntity.ok().build();
+			var authentication = authenticationManager.authenticate(usernamePassword);
+
+			String username = authentication.getName();
+			String token = tokenService.generateToken(authentication);
+
+			ResponseDto responseDto = new ResponseDto(username, token);
+	        return ResponseEntity.ok(responseDto);
 	    } catch (AuthenticationException e) {
-	        return ResponseEntity.status(403).body("Autenticação falhou, usuário ou senha inválido.");
+	        return ResponseEntity.status(403).build();
 	    }
 	}
 	

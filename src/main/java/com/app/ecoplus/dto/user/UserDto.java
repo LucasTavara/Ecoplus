@@ -39,7 +39,15 @@ public class UserDto implements Serializable{
 		this.documento = user.getDocumento();
 		this.role = user.getRole();
 	}
-	public UserDto(String email, String password, String s, String phone, String age, String endereco, String documento, UserRole role) {
+	public UserDto(String email, String password, String nomeCompleto, String phone, String age, String endereco, String documento, UserRole role) {
+		this.email = email;
+		this.password = password;
+		this.nomeCompleto = nomeCompleto;
+		this.phone = phone;
+		this.age = age;
+		this.endereco = endereco;
+		this.documento = documento;
+		this.role = role;
 	}
 }
 

@@ -39,11 +39,13 @@ public class UserService implements UserDetailsService {
     
     //Criar
     public UserDto createUser(UserDto userDto) {
-    	User user = userMapper.toUser(userDto);
-        User savedUser = userRepository.save(user);
-        return userMapper.toUserDto(savedUser);
+        try {
+            User savedUser = userRepository.save(userMapper.toUser(userDto));
+            return userMapper.toUserDto(savedUser);
+        } catch (Exception e) {
+            throw new ObjectNotFoundException("User already exists");
+        }
     }
-
     //Atualizar
     public UserDto updateUser(Long id, UserDto userDto) {
         Optional<User> existingUser = userRepository.findById(id);
@@ -71,14 +73,6 @@ public class UserService implements UserDetailsService {
         }catch(Exception e){
             throw new ObjectNotFoundException("Teste");
         }
-
-
-//        Optional<User> user = userRepository.findById(id);
-//        if (user.isEmpty()) {
-//            userRepository.deleteById(id);
-//        } else {
-//            throw new ObjectNotFoundException("User not found");
-//        }
     }
     // Listar
     public List<UserDto> findAll() {

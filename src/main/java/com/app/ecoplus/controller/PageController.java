@@ -4,8 +4,8 @@ import com.app.ecoplus.dto.FormDto;
 import com.app.ecoplus.dto.user.UserAuthDto;
 import com.app.ecoplus.dto.user.UserDto;
 import com.app.ecoplus.dto.user.UserRegisterAuthDto;
-import com.app.ecoplus.service.FormService;
 import com.app.ecoplus.service.ImageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +14,10 @@ import java.util.Map;
 
 
 @Controller
-
+@RequiredArgsConstructor
 public class PageController {
 
-
-
-//	Classe focada na renderização de páginas e gestão dos templates.
-	
 	private final ImageService imageService;
-	private final FormService formService;
-	private PageController(ImageService imageService, FormService formService) {
-		this.imageService = imageService;
-        this.formService = formService;
-    }
 
 	@GetMapping("/")
 	public String index(Model model) {
@@ -84,4 +75,19 @@ public class PageController {
 		model.addAllAttributes(imageMap);
 		return "sobrenos";
 	}
+
+	@GetMapping("/negociar")
+	public String negociar (Model model){
+		Map<String, String> imageMap = imageService.imagesVendas();
+		model.addAllAttributes(imageMap);
+		return "vendas";
+	}
+
+	@GetMapping("/infor")
+	public String infor(Model model){
+		Map<String, String> imageMap = imageService.imagesInfor();
+		model.addAllAttributes(imageMap);
+		return "infor";
+	}
+
 }

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form th:action="@{/submit/form}" th:object="${formDto}" method="post">
+<form th:action="@{/form-api/create}" th:object="${formDto}" method="post" id="form">
 
     <label for="nomeCompleto">Nome Completo</label>
     <input type="text" name="nomeCompleto" id="nomeCompleto" th:field="*{nomeCompleto}" required />

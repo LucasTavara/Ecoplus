@@ -1,58 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org  ">
 <head>
     <title>Card de Vendas Ecoplus</title>
-    <link rel="stylesheet" href="css/card.css">
-    <link rel="stylesheet" href="css/cardresponsive.css" media="screen">
+    <link rel="stylesheet" th:href="@{/css/card.css}">
+    <link rel="stylesheet" th:href="@{/css/cardresponsive.css}" media="screen">
 </head>
 <body>
 
 <!-- card vendas -->
 <div class="card">
-    <img src="/comofunciona/residuos.jpg">
+    <img th:src="${Residuos}">
     <div>
         <h1>Resíduos orgânicos</h1>
         <h2>1000 kg</h2>
         <span>Disponível!</span>
-        <a class="card-btn" href="/infor.html">
+        <a class="card-btn" th:href="@{/infor}">
             <button>Informações!</button></a>
     </div>
 </div>
 
 <div class="card">
-    <img src="/comofunciona/residuos.jpg">
+    <img th:src="${Residuos}">
     <div>
         <h1>Resíduos orgânicos</h1>
         <h2>1000 kg</h2>
         <span>Disponível!</span>
-        <a class="card-btn" href="/infor.html">
+        <a class="card-btn" th:href="@{/infor}">
             <button>Informações!</button></a>
     </div>
-</div>
 </div>
 
 <div class="card">
-    <img src="/comofunciona/residuos.jpg">
+    <img th:src="${Residuos}">
     <div>
         <h1>Resíduos orgânicos</h1>
         <h2>1000 kg</h2>
         <span>Disponível!</span>
-        <a class="card-btn" href="/infor.html">
+        <a class="card-btn" th:href="@{/infor}">
             <button>Informações!</button></a>
     </div>
-</div>
 </div>
 
 <div class="card">
-    <img src="/comofunciona/residuos.jpg">
+    <img th:src="${Residuos}">
     <div>
         <h1>Resíduos orgânicos</h1>
         <h2>1000 kg</h2>
         <span>Disponível!</span>
-        <a class="card-btn" href="/infor.html">
+        <a class="card-btn" th:href="@{/infor}">
             <button>Informações!</button></a>
     </div>
-</div>
 </div>
 
 
@@ -61,9 +58,9 @@
 
 
 <!-- Botão de voltar -->
-<a href="index.html">
+<a th:href="@{/}">
     <div id="bubble">
-        <img src="logoecoplus/logo_cinza sem fundo.png" alt="icone-usuário" title="fazer-login" eight="40px" width="40px">
+        <img th:src="${LogoCinza}" alt="icone-usuário" title="fazer-login" eight="40px" width="40px">
     </div>
 </a>
 <!-- fim. -->

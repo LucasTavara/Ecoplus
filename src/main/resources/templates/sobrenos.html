@@ -6,7 +6,6 @@
     <link rel="stylesheet" th:href="@{/css/styleeco.css}">
     <link rel="stylesheet" th:href="@{/css/responsive.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/sobrenos.css}">
-    <link rel="stylesheet" th:href="@{/css/card.css}">
     <link rel="icon" th:href="@{img/logo/LogoCinza.png}" type="image/png">
 
     <!-- Cdnjs -->
@@ -39,9 +38,10 @@
     <div class="interface">
         <section class="logo">
 
+            <a th:href="@{/}">
             <img class="logo-branca"  th:src="${LogoCinza}" alt="logotipo" width="88px" height="88px">
             <img class="logo-preto"  th:src="${LogoPreta}" alt="logotipo" width="88px" height="88px">
-
+            </a>
         </section>
         <!-- Fim. -->
 
@@ -103,7 +103,7 @@
     <h1 class="title">Sobre Nós</h1>
     <div class="about-content">
         <div class="image">
-            <video src="/video/EcoPlusVideo.mp4" width="620" height="380" controls preload="none">
+            <video src="/video/EcoPlusVideo.mp4" class="video" width="620" height="380" controls preload="none">
             </video>
         </div>
         <div class="content">

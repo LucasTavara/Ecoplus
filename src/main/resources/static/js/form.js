@@ -38,7 +38,7 @@ class FormSubmit {
         await fetch(this.url, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Accept: "application/json",
           },
           body: JSON.stringify(this.getFormObject()),
@@ -57,8 +57,8 @@ class FormSubmit {
   }
   
   const formSubmit = new FormSubmit({
-    form: "[data-form]",
-    button: "[data-button]",
+    form: "#form",
+    button: "button[type=submit]",
     success: "<h1 class='success'>Mensagem enviada!</h1>",
     error: "<h1 class='error'>Não foi possível enviar sua mensagem.</h1>",
   });

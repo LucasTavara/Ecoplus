@@ -1,14 +1,17 @@
 package com.app.ecoplus.controller;
 
 import com.app.ecoplus.dto.FormDto;
+import com.app.ecoplus.dto.email.EmailDto;
 import com.app.ecoplus.entity.Form;
 import com.app.ecoplus.service.FormService;
+import com.app.ecoplus.service.email.EmailService;
 import com.app.ecoplus.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +26,14 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class FormController {
 
-
+    private final EmailService emailService;
     private final FormService formService;
 
     //Criado
+
     @PostMapping(value = "/create", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FormDto> createForm(@RequestBody @Valid FormDto formDto) {
+        emailService.sendEmail(formDto);
         return ResponseEntity.ok(formService.create(formDto));
     }
 

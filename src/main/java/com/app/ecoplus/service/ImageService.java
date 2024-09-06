@@ -103,13 +103,22 @@ public class ImageService {
 		imageMap.putAll(images("Logo"));
 
 		imageMap.put("Residuos", "/img/residuos.jpg");
+
 		return imageMap;
 	}
 
-	public Map<String, String> imagesInfor(){
+	public Map <String, String> imagesInfor() {
+
+//		Logo
 		Map<String, String> imageMap = new HashMap<>();
 		imageMap.putAll(images("Logo"));
-		imageMap.putAll(images("Card"));
+		imageMap.put("LogoCinza", "/img/logo/LogoCinza.png");
+		imageMap.put("LogoPreta", "/img/logo/LogoPreta.png");
+		imageMap.put("residuo", "img/card/resi1.jpg");
+		imageMap.put("residuo1", "img/card/resi2.jpg");
+		imageMap.put("residuo2", "img/card/resi3.jpg");
+		imageMap.put("residuo3", "img/card/resi4.jpg");
 		return imageMap;
+
 	}
 }

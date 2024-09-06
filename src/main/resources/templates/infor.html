@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleeco.css">
-    <link rel="stylesheet" href="css/responsive.css" media="screen">
-    <link rel="stylesheet" href="css/sobrenos.css">
+    <link rel="stylesheet" th:href="@{css/styleeco.css}">
+    <link rel="stylesheet" th:href="@{css/responsive.css}" media="screen">
+    <link rel="stylesheet" th:href="@{css/sobrenos.css}">
+    <link rel="icon" th:href="${LogoCinza}" type="image/png">
 
     <!-- Cdnjs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,8 +23,8 @@
     <!-- /Fim -->
 
     <!-- Scripts de JS -->
-    <script src="js/menu.js" defer></script>
-    <script src="js/btn-menu-mob.js" defer></script>
+    <script th:src="@{js/menu.js}" defer></script>
+    <script th:src="@{js/btn-menu-mob.js}" defer></script>
     <!-- Fim -->
     <title>Ecoplus</title>
 </head>
@@ -37,8 +38,8 @@
     <div class="interface">
         <section class="logo">
 
-            <img class="logo-branca"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
-            <img class="logo-preto"  src="logoecoplus/logo_cinza sem fundo.png" alt="logotipo" width="88px" height="88px">
+            <img class="logo-branca"  th:src="${LogoCinza}" alt="logotipo" width="88px" height="88px">
+            <img class="logo-preto"  th:src="${LogoPreta}" alt="logotipo" width="88px" height="88px">
 
         </section>
         <!-- Fim. -->
@@ -48,9 +49,9 @@
         <section class="menu-desktop">
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
+                    <li><a th:href="@{/}">Inicio</a></li>
+                    <li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+                    <li><a th:href="@{/faq}">Biogás</a></li>
                 </ul>
             </nav>
         </section>
@@ -58,7 +59,7 @@
 
         <!--Botão  de Contato *Entrar > Login -->
         <section class="btn-contato">
-            <a href="login.html">
+            <a th:href="@{/login}">
                 <button>Entrar</button>
             </a>
         </section>
@@ -76,9 +77,9 @@
         <section class="menu-mobile" id="menu-mobile">
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobrenos.html">Sobre Nós</a></li>
-                    <li><a href="faq.html">Biogás</a></li>
+                    <li><a th:href="@{/}">Inicio</a></li>
+                    <li><a th:href="@{/sobrenos}">Sobre Nós</a></li>
+                    <li><a th:href="@{/faq}">Biogás</a></li>
                 </ul>
             </nav>
         </section>
@@ -102,7 +103,7 @@
 <div class="container">
     <div class="about-content">
         <div class="image">
-            <img src="/card/resi1.jpg" alt="">
+            <img th:src="${residuo}" alt="">
         </div>
 
         <div class="content">
@@ -111,7 +112,7 @@
 
             <p>R$ 00000,00</p>
 
-            <a href="" class="comprar">Negociar!</a>
+            <a href="https://wa.me/5581973311735" class="comprar">Negociar!</a>
         </div>
     </div>
 </div>
@@ -119,7 +120,7 @@
 <div class="container">
     <div class="about-content">
         <div class="image">
-            <img src="card/resi2.jpg" alt="">
+            <img th:src="${residuo1}" alt="">
         </div>
 
         <div class="content">
@@ -128,7 +129,7 @@
 
             <p>R$ 00000,00</p>
 
-            <a href="" class="comprar">Negociar!</a>
+            <a href="https://wa.me/5581973311735" class="comprar">Negociar!</a>
         </div>
     </div>
 </div>
@@ -136,7 +137,7 @@
 <div class="container">
     <div class="about-content">
         <div class="image">
-            <img src="card/resi3.jpg" alt="">
+            <img th:src="${residuo2}" alt="">
         </div>
 
         <div class="content">
@@ -145,7 +146,7 @@
 
             <p>R$ 00000,00</p>
 
-            <a href="" class="comprar">Negociar!</a>
+            <a href="https://wa.me/5581973311735" class="comprar">Negociar!</a>
         </div>
     </div>
 </div>
@@ -153,7 +154,7 @@
 <div class="container">
     <div class="about-content">
         <div class="image">
-            <img src="/card/resi4.jpg" alt="">
+            <img th:src="${residuo3}" alt="">
         </div>
 
         <div class="content">
@@ -162,7 +163,7 @@
 
             <p>R$ 00000,00</p>
 
-            <a href="" class="comprar">Negociar!</a>
+            <a href="https://wa.me/5581973311735" class="comprar">Negociar!</a>
         </div>
     </div>
 </div>

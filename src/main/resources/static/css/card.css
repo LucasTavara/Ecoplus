@@ -9,12 +9,12 @@ body {
   height: 100vh;
   font-family: "Arial";
   gap:16px;
-  background-image: url("/imgcabeçalho/Banner.jpeg")
+  background-image: url(/img/Banner.jpeg)
 }
 .card {
   background-color: #fff;
-  width: 200px;
-  height: 260px;
+  width: 230px;
+  height: 290px;
   border-radius: 12px;
   box-shadow: 4px 4px 12px #000000;
 }
@@ -30,7 +30,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  height: 50%;
+  height: 45%;
 }
 .card h1 {
   font-size: 1.2rem;
